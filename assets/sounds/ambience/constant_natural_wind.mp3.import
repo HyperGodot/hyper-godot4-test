@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cbjk0i2467jc8"
+path="res://.godot/imported/constant_natural_wind.mp3-163fff7062f7dd1f084e41a94eba4a22.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/ambience/constant_natural_wind.mp3"
+dest_files=["res://.godot/imported/constant_natural_wind.mp3-163fff7062f7dd1f084e41a94eba4a22.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0

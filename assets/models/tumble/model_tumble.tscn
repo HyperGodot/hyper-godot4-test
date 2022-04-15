@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpk1cfupvkvxd"]
+
+[ext_resource type="PackedScene" uid="uid://ehxvryerwk3q" path="res://assets/models/tumble/tumble.glb" id="1"]
+
+[node name="tumble" instance=ExtResource( "1" )]
+transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 0, 0, 0)
