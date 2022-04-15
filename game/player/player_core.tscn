@@ -1,149 +1,104 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=37 format=3 uid="uid://th4ivyj7adfg"]
 
-[ext_resource path="res://assets/models/tumble/model_tumble.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/models/tumble/tumble/sprint-loop.tres" type="Animation" id=2]
-[ext_resource path="res://assets/models/tumble/tumble/run-loop.tres" type="Animation" id=3]
-[ext_resource path="res://assets/models/tumble/tumble/landing.tres" type="Animation" id=4]
-[ext_resource path="res://game/player/player_local_core.tres" type="AnimationNodeBlendTree" id=5]
-[ext_resource path="res://assets/models/tumble/tumble/idle-loop.tres" type="Animation" id=6]
-[ext_resource path="res://assets/models/tumble/tumble/falling-loop.tres" type="Animation" id=7]
-[ext_resource path="res://assets/models/tumble/tumble/dive-roll.tres" type="Animation" id=8]
-[ext_resource path="res://assets/models/tumble/tumble/default.tres" type="Animation" id=9]
-[ext_resource path="res://assets/models/tumble/tumble/jump.tres" type="Animation" id=10]
-[ext_resource path="res://assets/models/tumble/tumble/strafe-left-loop.tres" type="Animation" id=11]
-[ext_resource path="res://assets/models/tumble/tumble/walk-backward-loop.tres" type="Animation" id=12]
-[ext_resource path="res://assets/models/tumble/tumble/walk-diagonal-left-back-loop.tres" type="Animation" id=13]
-[ext_resource path="res://assets/models/tumble/tumble/strafe-right-loop.tres" type="Animation" id=14]
-[ext_resource path="res://assets/models/tumble/tumble/walk-forward-loop.tres" type="Animation" id=15]
-[ext_resource path="res://assets/models/tumble/tumble/walk-diagonal-left-loop.tres" type="Animation" id=16]
-[ext_resource path="res://assets/models/tumble/tumble/walk-diagonal-right-back-loop.tres" type="Animation" id=17]
-[ext_resource path="res://assets/models/tumble/tumble/walk-diagonal-right-loop.tres" type="Animation" id=18]
-[ext_resource path="res://assets/models/tumble/tumble/wall_grab_f-loop.tres" type="Animation" id=19]
-[ext_resource path="res://assets/models/tumble/tumble/wall_grab_l-loop.tres" type="Animation" id=20]
-[ext_resource path="res://assets/models/tumble/tumble/wall_grab_r-loop.tres" type="Animation" id=21]
-[ext_resource path="res://assets/models/tumble/tumble/wall_run_r-loop.tres" type="Animation" id=22]
-[ext_resource path="res://assets/models/tumble/tumble/wall_run_l-loop.tres" type="Animation" id=23]
-[ext_resource path="res://game/player/player_core.gd" type="Script" id=24]
-[ext_resource path="res://assets/sounds/player/generic_robot_jump.wav" type="AudioStream" id=25]
-[ext_resource path="res://assets/sounds/player/metal_footstep_3.wav" type="AudioStream" id=26]
-[ext_resource path="res://assets/sounds/player/metal_footstep_2.wav" type="AudioStream" id=27]
-[ext_resource path="res://assets/sounds/player/metal_footstep_1.wav" type="AudioStream" id=28]
-[ext_resource path="res://assets/sounds/player/fire_grapplinghook.wav" type="AudioStream" id=29]
-[ext_resource path="res://assets/sounds/player/release_grapplinghook.wav" type="AudioStream" id=30]
-[ext_resource path="res://assets/sounds/player/generic_robot_land.wav" type="AudioStream" id=31]
-[ext_resource path="res://assets/sounds/player/fire_grapplinghook1.mp3" type="AudioStream" id=32]
-[ext_resource path="res://assets/sounds/player/teleport_1.mp3" type="AudioStream" id=33]
-[ext_resource path="res://game/player/grappling_hook/gh_visual_line_1.tscn" type="PackedScene" id=34]
-[ext_resource path="res://assets/sounds/player/toggleLight_1.wav" type="AudioStream" id=35]
+[ext_resource type="PackedScene" uid="uid://cpk1cfupvkvxd" path="res://assets/models/tumble/model_tumble.tscn" id="1"]
+[ext_resource type="AnimationNodeBlendTree" uid="uid://4lcyy2yqlv2m" path="res://game/player/player_animation_tree.tres" id="14_4b160"]
+[ext_resource type="Animation" uid="uid://bhxwd0hc1xwol" path="res://assets/models/tumble/animation/default.res" id="15_khbab"]
+[ext_resource type="Animation" uid="uid://3m8jnrrjmb8n" path="res://assets/models/tumble/animation/dive-roll.res" id="16_8624j"]
+[ext_resource type="Animation" uid="uid://csbbfdgwqo8tq" path="res://assets/models/tumble/animation/falling.res" id="17_8nvgv"]
+[ext_resource type="Animation" uid="uid://cllf5vh5wfe4m" path="res://assets/models/tumble/animation/jump.res" id="18_cd8xy"]
+[ext_resource type="Animation" uid="uid://b641gdt8rlxs0" path="res://assets/models/tumble/animation/idle.res" id="18_ti6sk"]
+[ext_resource type="Animation" uid="uid://bbo2efp3p5j45" path="res://assets/models/tumble/animation/landing.res" id="19_s06o7"]
+[ext_resource type="Animation" uid="uid://dg0td345nrdbe" path="res://assets/models/tumble/animation/run.res" id="20_c1ief"]
+[ext_resource type="Animation" uid="uid://beqlu220rgebq" path="res://assets/models/tumble/animation/sprint.res" id="21_logsa"]
+[ext_resource type="Animation" uid="uid://b046urodah0a1" path="res://assets/models/tumble/animation/strafe-left.res" id="22_vb2y3"]
+[ext_resource type="Animation" uid="uid://b0vglu3hw56jb" path="res://assets/models/tumble/animation/strafe_right.res" id="23_njdo4"]
+[ext_resource type="Script" path="res://game/player/player_core.gd" id="24"]
+[ext_resource type="Animation" uid="uid://h4f7tog32k57" path="res://assets/models/tumble/animation/walk-backward.res" id="24_yc4q7"]
+[ext_resource type="AudioStream" uid="uid://d2voabwtxjm13" path="res://assets/sounds/player/generic_robot_jump.wav" id="25"]
+[ext_resource type="Animation" uid="uid://cetrd58cpnn2x" path="res://assets/models/tumble/animation/walk-diagonal-left.res" id="25_y8rok"]
+[ext_resource type="AudioStream" uid="uid://buq4r46riphcr" path="res://assets/sounds/player/metal_footstep_3.wav" id="26"]
+[ext_resource type="Animation" uid="uid://crlfbbyt7jnwd" path="res://assets/models/tumble/animation/walk-diagonal-left-back.res" id="26_q8krr"]
+[ext_resource type="AudioStream" uid="uid://47cvn38hpima" path="res://assets/sounds/player/metal_footstep_2.wav" id="27"]
+[ext_resource type="Animation" uid="uid://brqor25qijknl" path="res://assets/models/tumble/animation/walk-diagonal-right.res" id="27_arv07"]
+[ext_resource type="AudioStream" uid="uid://chxlg16xhbglw" path="res://assets/sounds/player/metal_footstep_1.wav" id="28"]
+[ext_resource type="Animation" uid="uid://cy81owqw5jwgd" path="res://assets/models/tumble/animation/walk-diagonal-right-back.res" id="28_soxwl"]
+[ext_resource type="AudioStream" uid="uid://bnyupoh566q7j" path="res://assets/sounds/player/fire_grapplinghook.wav" id="29"]
+[ext_resource type="Animation" uid="uid://cevud8wm6itgs" path="res://assets/models/tumble/animation/walk-forward.res" id="29_hyowf"]
+[ext_resource type="AudioStream" uid="uid://dfrntsh5iwkn4" path="res://assets/sounds/player/release_grapplinghook.wav" id="30"]
+[ext_resource type="Animation" uid="uid://diu138rt4wbo4" path="res://assets/models/tumble/animation/wall-grab-f.res" id="30_8o6lq"]
+[ext_resource type="AudioStream" uid="uid://jdscgsswe4kv" path="res://assets/sounds/player/generic_robot_land.wav" id="31"]
+[ext_resource type="Animation" uid="uid://rejlngohxkgr" path="res://assets/models/tumble/animation/wall-grab-l.res" id="31_tqbd2"]
+[ext_resource type="AudioStream" uid="uid://cs26rjexov20r" path="res://assets/sounds/player/fire_grapplinghook1.mp3" id="32"]
+[ext_resource type="Animation" uid="uid://cjiv1m5iedtef" path="res://assets/models/tumble/animation/wall-grab-r.res" id="32_1j1wk"]
+[ext_resource type="AudioStream" uid="uid://dc0163m46sdrj" path="res://assets/sounds/player/teleport_1.mp3" id="33"]
+[ext_resource type="Animation" uid="uid://bkvaodakwug3e" path="res://assets/models/tumble/animation/wall-run-l.res" id="33_35j74"]
+[ext_resource type="PackedScene" path="res://game/player/grappling_hook/gh_visual_line_1.tscn" id="34"]
+[ext_resource type="Animation" uid="uid://4ixqttqa6txu" path="res://assets/models/tumble/animation/wall-run-r.res" id="34_rq5gl"]
+[ext_resource type="AudioStream" uid="uid://b5015ng6ggdr3" path="res://assets/sounds/player/toggleLight_1.wav" id="35"]
 
-[sub_resource type="CylinderShape" id=1]
-radius = 0.3
+[sub_resource type="CylinderShape3D" id="1"]
 height = 1.58
+radius = 0.3
 
-[node name="PlayerCore" type="KinematicBody"]
-script = ExtResource( 24 )
+[node name="PlayerCore" type="CharacterBody3D"]
+script = ExtResource( "24" )
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.788, 0 )
-shape = SubResource( 1 )
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.788, 0)
+shape = SubResource( "1" )
 
-[node name="Model" parent="." instance=ExtResource( 1 )]
+[node name="Model" parent="." instance=ExtResource( "1" )]
 
 [node name="Sound_Jump" type="AudioStreamPlayer3D" parent="Model"]
-transform = Transform( 1.53846, 0, 0, 0, 1.53846, 0, 0, 0, 1.53846, 0, 0, 0 )
-stream = ExtResource( 25 )
+transform = Transform3D(1.53846, 0, 0, 0, 1.53846, 0, 0, 0, 1.53846, 0, 0, 0)
+stream = ExtResource( "25" )
 attenuation_filter_cutoff_hz = 20500.0
 
 [node name="Sound_Land" type="AudioStreamPlayer3D" parent="Model"]
-transform = Transform( 1.53846, 0, 0, 0, 1.53846, 0, 0, 0, 1.53846, 0, 0, 0 )
-stream = ExtResource( 31 )
+transform = Transform3D(1.53846, 0, 0, 0, 1.53846, 0, 0, 0, 1.53846, 0, 0, 0)
+stream = ExtResource( "31" )
 attenuation_filter_cutoff_hz = 20500.0
 
 [node name="Sound_Metal_Footstep_1" type="AudioStreamPlayer3D" parent="Model"]
-transform = Transform( 1.53846, 0, 0, 0, 1.53846, 0, 0, 0, 1.53846, 0, 0, 0 )
-stream = ExtResource( 28 )
+transform = Transform3D(1.53846, 0, 0, 0, 1.53846, 0, 0, 0, 1.53846, 0, 0, 0)
+stream = ExtResource( "28" )
 
 [node name="Sound_Metal_Footstep_2" type="AudioStreamPlayer3D" parent="Model"]
-transform = Transform( 1.53846, 0, 0, 0, 1.53846, 0, 0, 0, 1.53846, 0, 0, 0 )
-stream = ExtResource( 27 )
+transform = Transform3D(1.53846, 0, 0, 0, 1.53846, 0, 0, 0, 1.53846, 0, 0, 0)
+stream = ExtResource( "27" )
 
 [node name="Sound_Metal_Footstep_3" type="AudioStreamPlayer3D" parent="Model"]
-transform = Transform( 1.53846, 0, 0, 0, 1.53846, 0, 0, 0, 1.53846, 0, 0, 0 )
-stream = ExtResource( 26 )
+transform = Transform3D(1.53846, 0, 0, 0, 1.53846, 0, 0, 0, 1.53846, 0, 0, 0)
+stream = ExtResource( "26" )
 
 [node name="Sound_Shoot_GrapplingHook_1" type="AudioStreamPlayer3D" parent="Model"]
-stream = ExtResource( 29 )
+stream = ExtResource( "29" )
 attenuation_filter_cutoff_hz = 20500.0
 
 [node name="Sound_Shoot_GrapplingHook_2" type="AudioStreamPlayer3D" parent="Model"]
-stream = ExtResource( 32 )
+stream = ExtResource( "32" )
 attenuation_filter_cutoff_hz = 20500.0
 
 [node name="Sound_Release_GrapplingHook" type="AudioStreamPlayer3D" parent="Model"]
-stream = ExtResource( 30 )
+stream = ExtResource( "30" )
 attenuation_filter_cutoff_hz = 20500.0
 
 [node name="Sound_Teleport_1" type="AudioStreamPlayer3D" parent="Model"]
-transform = Transform( 1.53846, 0, 0, 0, 1.53846, 0, 0, 0, 1.53846, 0, 0, 0 )
-stream = ExtResource( 33 )
+transform = Transform3D(1.53846, 0, 0, 0, 1.53846, 0, 0, 0, 1.53846, 0, 0, 0)
+stream = ExtResource( "33" )
 attenuation_filter_cutoff_hz = 20500.0
 
 [node name="Sound_ToggleLight_1" type="AudioStreamPlayer3D" parent="Model"]
-transform = Transform( 1.53846, 0, 0, 0, 1.53846, 0, 0, 0, 1.53846, 0, 0, 0 )
-stream = ExtResource( 35 )
+transform = Transform3D(1.53846, 0, 0, 0, 1.53846, 0, 0, 0, 1.53846, 0, 0, 0)
+stream = ExtResource( "35" )
 attenuation_filter_cutoff_hz = 20500.0
 
-[node name="GrappleLineHelper" type="Spatial" parent="Model"]
-transform = Transform( 1.53846, 0, 0, 0, 1.53846, 0, 0, 0, 1.53846, 0, 0.753, 0 )
+[node name="GrappleLineHelper" type="Node3D" parent="Model"]
+transform = Transform3D(1.53846, 0, 0, 0, 1.53846, 0, 0, 0, 1.53846, 0, 0.753, 0)
 
-[node name="GrappleVisualLine_1" parent="Model/GrappleLineHelper" instance=ExtResource( 34 )]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.753, -0.121675 )
+[node name="GrappleVisualLine_1" parent="Model/GrappleLineHelper" instance=ExtResource( "34" )]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.753, -0.121675)
 visible = false
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../Model")
-anims/default = ExtResource( 9 )
-anims/dive-roll = ExtResource( 8 )
-anims/falling-loop = ExtResource( 7 )
-anims/idle-loop = ExtResource( 6 )
-anims/jump = ExtResource( 10 )
-anims/landing = ExtResource( 4 )
-anims/run-loop = ExtResource( 3 )
-anims/sprint-loop = ExtResource( 2 )
-anims/strafe-left-loop = ExtResource( 11 )
-anims/strafe-right-loop = ExtResource( 14 )
-anims/walk-backward-loop = ExtResource( 12 )
-anims/walk-diagonal-left-back-loop = ExtResource( 13 )
-anims/walk-diagonal-left-loop = ExtResource( 16 )
-anims/walk-diagonal-right-back-loop = ExtResource( 17 )
-anims/walk-diagonal-right-loop = ExtResource( 18 )
-anims/walk-forward-loop = ExtResource( 15 )
-anims/wall_grab_f-loop = ExtResource( 19 )
-anims/wall_grab_l-loop = ExtResource( 20 )
-anims/wall_grab_r-loop = ExtResource( 21 )
-anims/wall_run_l-loop = ExtResource( 23 )
-anims/wall_run_r-loop = ExtResource( 22 )
-
-[node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = ExtResource( 5 )
-anim_player = NodePath("../AnimationPlayer")
-active = true
-parameters/Blend2/blend_amount = 0
-"parameters/Blend2 2/blend_amount" = 0
-"parameters/TimeScale 3/scale" = 1.0
-parameters/aim_transition/current = 1
-parameters/air_blend/blend_amount = 0
-parameters/air_transition/current = 1
-parameters/falling_scale/scale = 1.0
-parameters/iwr_blend/blend_amount = 0.0
-parameters/jump_scale/scale = 2.0
-parameters/landing_scale/scale = 1.0
-parameters/roll/active = false
-parameters/roll_scale/scale = 1.0
-parameters/run_scale/scale = 1.0
-parameters/strafe/blend_position = Vector2( 0, 0 )
-parameters/walk_scale/scale = 1.0
-parameters/wall_run/current = 2
 
 [node name="MoveNetworkTimer" type="Timer" parent="."]
 wait_time = 0.1
@@ -152,13 +107,57 @@ autostart = true
 [node name="GrapplingHook" type="Node" parent="."]
 
 [node name="IKTarget" type="Position3D" parent="GrapplingHook"]
-transform = Transform( -0.454202, 0.376862, -0.807264, 0.862653, -0.0403142, -0.504187, -0.222553, -0.925392, -0.30679, 0, 0.96284, -1.2328 )
+transform = Transform3D(-0.454202, 0.376862, -0.807264, 0.862653, -0.0403142, -0.504187, -0.222553, -0.925392, -0.30679, 0, 0.96284, -1.2328)
 
-[node name="OmniLight" type="OmniLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.769087, 0 )
+[node name="OmniLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.769087, 0)
 visible = false
 light_energy = 5.194
-shadow_color = Color( 1, 1, 1, 1 )
 omni_range = 2.23
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = ExtResource( "14_4b160" )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/Blend2/blend_amount = 0
+"parameters/Blend2 2/blend_amount" = 0
+"parameters/TimeScale 3/scale" = 1.0
+parameters/aim_transition/current = 0
+parameters/air_blend/blend_amount = 0
+parameters/air_transition/current = 1
+parameters/falling_scale/scale = 1.0
+parameters/iwr_blend/blend_amount = 0
+parameters/jump_scale/scale = 1.0
+parameters/landing_scale/scale = 1.0
+parameters/roll/active = false
+parameters/roll_scale/scale = 1.0
+parameters/run_scale/scale = 1.0
+parameters/strafe/blend_position = Vector2(0.00236213, -0.0131004)
+parameters/walk_scale/scale = 1.0
+parameters/wall_run/current = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Model")
+anims/default = ExtResource( "15_khbab" )
+anims/dive-roll = ExtResource( "16_8624j" )
+anims/falling = ExtResource( "17_8nvgv" )
+anims/idle = ExtResource( "18_ti6sk" )
+anims/jump = ExtResource( "18_cd8xy" )
+anims/landing = ExtResource( "19_s06o7" )
+anims/run = ExtResource( "20_c1ief" )
+anims/sprint = ExtResource( "21_logsa" )
+anims/strafe-left = ExtResource( "22_vb2y3" )
+anims/strafe_right = ExtResource( "23_njdo4" )
+anims/walk-backward = ExtResource( "24_yc4q7" )
+anims/walk-diagonal-left = ExtResource( "25_y8rok" )
+anims/walk-diagonal-left-back = ExtResource( "26_q8krr" )
+anims/walk-diagonal-right = ExtResource( "27_arv07" )
+anims/walk-diagonal-right-back = ExtResource( "28_soxwl" )
+anims/walk-forward = ExtResource( "29_hyowf" )
+anims/wall-grab-f = ExtResource( "30_8o6lq" )
+anims/wall-grab-l = ExtResource( "31_tqbd2" )
+anims/wall-grab-r = ExtResource( "32_1j1wk" )
+anims/wall-run-l = ExtResource( "33_35j74" )
+anims/wall-run-r = ExtResource( "34_rq5gl" )
 
 [connection signal="timeout" from="MoveNetworkTimer" to="." method="_on_MoveNetworkTimer_timeout"]

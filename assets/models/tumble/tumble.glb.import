@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ehxvryerwk3q"
+uid="uid://l6vfvdaxveow"
 path="res://.godot/imported/tumble.glb-a5221b2ec084b572b43558e0e45558ad.scn"
 
 [deps]
@@ -25,7 +25,136 @@ skins/use_named_skins=true
 animation/import=true
 animation/fps=30
 import_script/path=""
-_subresources={}
+_subresources={
+"animations": {
+"default": {
+"save_to_file/enabled": true,
+"save_to_file/keep_custom_tracks": "",
+"save_to_file/path": "res://assets/models/tumble/animation/default.res",
+"settings/loop_mode": 0
+},
+"dive-roll": {
+"save_to_file/enabled": true,
+"save_to_file/keep_custom_tracks": "",
+"save_to_file/path": "res://assets/models/tumble/animation/dive-roll.res",
+"settings/loop_mode": 0
+},
+"falling": {
+"save_to_file/enabled": true,
+"save_to_file/keep_custom_tracks": "",
+"save_to_file/path": "res://assets/models/tumble/animation/falling.res",
+"settings/loop_mode": 0
+},
+"idle": {
+"save_to_file/enabled": true,
+"save_to_file/keep_custom_tracks": "",
+"save_to_file/path": "res://assets/models/tumble/animation/idle.res",
+"settings/loop_mode": 1
+},
+"jump": {
+"save_to_file/enabled": true,
+"save_to_file/keep_custom_tracks": "",
+"save_to_file/path": "res://assets/models/tumble/animation/jump.res",
+"settings/loop_mode": 0
+},
+"landing": {
+"save_to_file/enabled": true,
+"save_to_file/keep_custom_tracks": "",
+"save_to_file/path": "res://assets/models/tumble/animation/landing.res",
+"settings/loop_mode": 0
+},
+"run": {
+"save_to_file/enabled": true,
+"save_to_file/keep_custom_tracks": "",
+"save_to_file/path": "res://assets/models/tumble/animation/run.res",
+"settings/loop_mode": 1
+},
+"sprint": {
+"save_to_file/enabled": true,
+"save_to_file/keep_custom_tracks": "",
+"save_to_file/path": "res://assets/models/tumble/animation/sprint.res",
+"settings/loop_mode": 1
+},
+"strafe-left": {
+"save_to_file/enabled": true,
+"save_to_file/keep_custom_tracks": "",
+"save_to_file/path": "res://assets/models/tumble/animation/strafe-left.res",
+"settings/loop_mode": 1
+},
+"strafe-right": {
+"save_to_file/enabled": true,
+"save_to_file/keep_custom_tracks": "",
+"save_to_file/path": "res://assets/models/tumble/animation/strafe_right.res",
+"settings/loop_mode": 1
+},
+"walk-backward": {
+"save_to_file/enabled": true,
+"save_to_file/keep_custom_tracks": "",
+"save_to_file/path": "res://assets/models/tumble/animation/walk-backward.res",
+"settings/loop_mode": 1
+},
+"walk-diagonal-left": {
+"save_to_file/enabled": true,
+"save_to_file/keep_custom_tracks": "",
+"save_to_file/path": "res://assets/models/tumble/animation/walk-diagonal-left.res",
+"settings/loop_mode": 1
+},
+"walk-diagonal-left-back": {
+"save_to_file/enabled": true,
+"save_to_file/keep_custom_tracks": "",
+"save_to_file/path": "res://assets/models/tumble/animation/walk-diagonal-left-back.res",
+"settings/loop_mode": 1
+},
+"walk-diagonal-right": {
+"save_to_file/enabled": true,
+"save_to_file/keep_custom_tracks": "",
+"save_to_file/path": "res://assets/models/tumble/animation/walk-diagonal-right.res",
+"settings/loop_mode": 1
+},
+"walk-diagonal-right-back": {
+"save_to_file/enabled": true,
+"save_to_file/keep_custom_tracks": "",
+"save_to_file/path": "res://assets/models/tumble/animation/walk-diagonal-right-back.res",
+"settings/loop_mode": 1
+},
+"walk-forward": {
+"save_to_file/enabled": true,
+"save_to_file/keep_custom_tracks": "",
+"save_to_file/path": "res://assets/models/tumble/animation/walk-forward.res",
+"settings/loop_mode": 1
+},
+"wall_grab_f": {
+"save_to_file/enabled": true,
+"save_to_file/keep_custom_tracks": "",
+"save_to_file/path": "res://assets/models/tumble/animation/wall-grab-f.res",
+"settings/loop_mode": 1
+},
+"wall_grab_l": {
+"save_to_file/enabled": true,
+"save_to_file/keep_custom_tracks": "",
+"save_to_file/path": "res://assets/models/tumble/animation/wall-grab-l.res",
+"settings/loop_mode": 1
+},
+"wall_grab_r": {
+"save_to_file/enabled": true,
+"save_to_file/keep_custom_tracks": "",
+"save_to_file/path": "res://assets/models/tumble/animation/wall-grab-r.res",
+"settings/loop_mode": 1
+},
+"wall_run_l": {
+"save_to_file/enabled": true,
+"save_to_file/keep_custom_tracks": "",
+"save_to_file/path": "res://assets/models/tumble/animation/wall-run-l.res",
+"settings/loop_mode": 1
+},
+"wall_run_r": {
+"save_to_file/enabled": true,
+"save_to_file/keep_custom_tracks": "",
+"save_to_file/path": "res://assets/models/tumble/animation/wall-run-r.res",
+"settings/loop_mode": 1
+}
+}
+}
 blender/nodes/visible=2
 blender/nodes/punctual_lights=true
 blender/nodes/cameras=true
