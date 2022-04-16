@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cue2rke35i36o"]
+
+[ext_resource type="Script" path="res://hypergodot/hyper_gateway/hyper_gateway.gd" id="1"]
+
+[node name="HyperGateway" type="Node"]
+script = ExtResource( "1" )

@@ -1,22 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://bktxghmjd4nc"]
+[gd_scene load_steps=5 format=3 uid="uid://bktxghmjd4nc"]
 
-[ext_resource type="PackedScene" path="res://game/player/player_core_local.tscn" id="1_2bdf3"]
-
-[sub_resource type="Environment" id="Environment_3swdt"]
-ssao_enabled = true
-sdfgi_enabled = true
+[ext_resource type="PackedScene" uid="uid://ds36d5iqtsvuh" path="res://game/player/player_core_local.tscn" id="1_2bdf3"]
+[ext_resource type="PackedScene" uid="uid://c55u58gv5o78n" path="res://game/maps/map_test/map_test.scn" id="1_xau7j"]
+[ext_resource type="PackedScene" uid="uid://cue2rke35i36o" path="res://hypergodot/hyper_gateway/hyper_gateway.tscn" id="2_p865q"]
+[ext_resource type="Script" path="res://hypergodot/hyper_gossip/hyper_gossip.gd" id="3_g8xkj"]
 
 [node name="Main" type="Node"]
 
-[node name="Map" type="Node3D" parent="."]
+[node name="Maps" type="Node3D" parent="."]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Map"]
-environment = SubResource( "Environment_3swdt" )
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Map"]
-size = Vector3(15.7153, 0.225672, 20.7109)
+[node name="map_test" parent="Maps" instance=ExtResource( "1_xau7j" )]
 
 [node name="Players" type="Node" parent="."]
 
 [node name="PlayerCoreLocal" parent="Players" instance=ExtResource( "1_2bdf3" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.758439, 0)
+
+[node name="HyperGodot" type="Node" parent="."]
+
+[node name="HyperGateway" parent="HyperGodot" instance=ExtResource( "2_p865q" )]
+script = ExtResource( "3_g8xkj" )
+url = "hyper://blog.mauve.moe/"
+extension_name = "hyper-gossip-v1"
+pool_size = 8
+queue_warning_size = 8
+
+[node name="HyperGossip" type="Node" parent="HyperGodot"]
+script = ExtResource( "3_g8xkj" )

@@ -1,12 +1,12 @@
 extends Control
 
-onready var playerNode = get_tree().get_current_scene().get_node("Players").get_node("PlayerLocal")
+@onready var playerNode = get_tree().get_current_scene().get_node("Players").get_node("PlayerCoreLocal")
 
-onready var currentmapValue : Label = $Panel/MarginContainer/GridContainer/Current_Map_Value
-onready var inputValue : Label = $Panel/MarginContainer/GridContainer/Input_Value
-onready var velocityValue : Label = $Panel/MarginContainer/GridContainer/Velocity_Value
-onready var speedValue : Label = $Panel/MarginContainer/GridContainer/Speed_Value
-onready var onfloorValue : Label = $Panel/MarginContainer/GridContainer/OnFloor_Value
+@onready var currentmapValue : Label = $Panel/MarginContainer/GridContainer/Current_Map_Value
+@onready var inputValue : Label = $Panel/MarginContainer/GridContainer/Input_Value
+@onready var velocityValue : Label = $Panel/MarginContainer/GridContainer/Velocity_Value
+@onready var speedValue : Label = $Panel/MarginContainer/GridContainer/Speed_Value
+@onready var onfloorValue : Label = $Panel/MarginContainer/GridContainer/OnFloor_Value
 
 
 const EVENT_PLAYER_MAPCHANGE = 'player_mapchange'
@@ -16,12 +16,12 @@ var hyperGossip : HyperGossip
 
 
 func _ready():
-	inputValue.text = String(Vector3.ZERO)
-	velocityValue.text = String(Vector3.ZERO)
+	inputValue.text = str(Vector3.ZERO)
+	velocityValue.text = str(Vector3.ZERO)
 	onfloorValue.text = "N/A"
 	
 	# Update Actual Map Node
-	actualMapNode = get_tree().get_current_scene().get_node("Maps").get_child(0)
+	actualMapNode = playerNode.currentMap
 	
 	# Get HyperGossip
 	hyperGossip = get_tree().get_current_scene().get_node("HyperGodot").get_node("HyperGossip")
@@ -36,28 +36,9 @@ func _process(_delta):
 	else:
 		onfloorValue.text = "No"
 
-
-func physicsModeToString() -> String:
-	if(playerNode is KinematicBody):
-		return "KinematicBody"
-	elif(playerNode is RigidBody):
-		if(playerNode.mode == RigidBody.MODE_RIGID):
-			return "Rigid"
-		elif(playerNode.mode == RigidBody.MODE_STATIC):
-			return "Static"
-		elif(playerNode.mode == RigidBody.MODE_CHARACTER):
-			return "Character"
-		elif(playerNode.mode == RigidBody.MODE_KINEMATIC):
-			return "Kinematic"
-		else:
-			return "Unknown"
-	else:
-		return "Unknown"
-
 func _on_map_test_button_up():
 	$Panel2/MarginContainer/GridContainer/map_test.release_focus()
 	tryMapChange("map_test", true)
-
 
 func _on_map_cyber_button_up():
 	$Panel2/MarginContainer/GridContainer/map_cyber.release_focus()

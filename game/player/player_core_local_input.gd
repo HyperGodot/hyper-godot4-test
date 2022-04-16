@@ -1,8 +1,8 @@
 extends Node
 
-onready var clippedCamera : Spatial = get_node("../CameraHead/CameraPivot/ClippedCamera")
-onready var clippedCameraHead : Spatial = get_node("../CameraHead")
-onready var clippedCameraPivot : Spatial = get_node("../CameraHead/CameraPivot")
+@onready var clippedCamera : Camera3D = get_node("../CameraHead/CameraPivot/ClippedCamera")
+@onready var clippedCameraHead : Node3D = get_node("../CameraHead")
+@onready var clippedCameraPivot : Node3D = get_node("../CameraHead/CameraPivot")
 
 signal player_restore_origin()
 signal player_mousemotion_event(event)
@@ -19,7 +19,7 @@ var mouseMovementChanged : bool = false
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	clippedCamera.add_exception(get_parent())
+	# clippedCamera.add_exception(get_parent())
 
 func _process(_delta):
 	var inputDirection : Vector3 = Vector3.ZERO

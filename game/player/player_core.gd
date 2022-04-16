@@ -1,4 +1,4 @@
-extends KinematicBody
+extends CharacterBody3D
 
 var hyperGossip : HyperGossip
 
@@ -11,44 +11,43 @@ const EVENT_PLAYER_SHOOT_GRAPPLINGHOOK = 'player_shoot_grapplinghook'
 const EVENT_PLAYER_RELEASE_GRAPPLINGHOOK = 'player_release_grapplinghook'
 const EVENT_PLAYER_TOGGLE_LIGHT = 'player_toggle_light'
 
-export var mouseSensitivity : float = 0.3
-export var movementSpeed : float = 14
-export var fallAcceleration : float = 27
-export var movementAcceleration : float = 4
-export var canJumpHeight : float = 10
-export var jumpHeight : float = 15
-export var turn_velocity : float = 15
-export var cameraLerpAmount : float = 40
-export var currentSpeed : float = 0
+@export var mouseSensitivity : float = 0.3
+@export var movementSpeed : float = 14
+@export var fallAcceleration : float = 27
+@export var movementAcceleration : float = 4
+@export var canJumpHeight : float = 10
+@export var jumpHeight : float = 15
+@export var turn_velocity : float = 15
+@export var cameraLerpAmount : float = 40
+@export var currentSpeed : float = 0
 
-onready var meshNode : Spatial = $Model
-onready var meshSkeletonNode : Skeleton = $Model/Armature/Skeleton
-onready var meshSkeletalIKNode : SkeletonIK = $Model/Armature/Skeleton/SkeletonIK
-onready var meshSkeletonHiddenHand : MeshInstance = $Model/Armature/Skeleton/player001
-onready var meshHandBone : int = meshSkeletonNode.find_bone("DEF-hand.R")
-onready var meshHandBonePos : Transform = meshSkeletonNode.get_bone_pose(meshHandBone)
+@onready var meshNode : Node3D = $Model
+@onready var meshSkeletonNode : Skeleton3D = $Model/Armature/Skeleton3D
+@onready var meshSkeletalIKNode : SkeletonIK3D = $Model/Armature/Skeleton/SkeletonIK3D
+@onready var meshSkeletonHiddenHand : MeshInstance3D = $Model/Armature/Skeleton/player001
+@onready var meshHandBone : int = meshSkeletonNode.find_bone("DEF-hand.R")
+@onready var meshHandBonePos : Transform3D = meshSkeletonNode.get_bone_pose(meshHandBone)
 
-onready var clippedCamera : Spatial = $CameraHead/CameraPivot/ClippedCamera
-onready var clippedCameraHead : Spatial = $CameraHead
-onready var clippedCameraPivot : Spatial = $CameraHead/CameraPivot
-# onready var csgMesh : CSGMesh = $Head/CamPivot/ClippedCamera/GrappleCast/CSGMesh
+@onready var clippedCamera : Node3D = $CameraHead/CameraPivot/ClippedCamera
+@onready var clippedCameraHead : Node3D = $CameraHead
+@onready var clippedCameraPivot : Node3D = $CameraHead/CameraPivot
 
-onready var meshCollisionShape : CollisionShape = $CollisionShape
+@onready var meshCollisionShape : CollisionShape3D = $CollisionShape
 
-onready var grappleHookCast : RayCast = $CameraHead/CameraPivot/GrappleHookCast
+@onready var grappleHookCast : RayCast3D = $CameraHead/CameraPivot/GrappleHookCast
 
-onready var grappleVisualPoint_1 = $GrapplingHook/GrappleVisualPoint_1
+@onready var grappleVisualPoint_1 = $GrapplingHook/GrappleVisualPoint_1
 # onready var grappleVisualPoint_2 = $GrapplingHook/GrappleVisualPoint_2
-onready var grappleVisualPoint = grappleVisualPoint_1
+@onready var grappleVisualPoint = grappleVisualPoint_1
 
-onready var grappleLineHelper : Spatial = $Model/GrappleLineHelper
-onready var grappleVisualLine : CSGCylinder = $Model/GrappleLineHelper/GrappleVisualLine_1
+@onready var grappleLineHelper : Node3D = $Model/GrappleLineHelper
+@onready var grappleVisualLine : CSGCylinder3D = $Model/GrappleLineHelper/GrappleVisualLine_1
 # onready var grappleVisualLine : = $Model/GrappleLineHelper/GrappleVisualLine_2
 
-onready var grappleIKTarget : Position3D = $GrapplingHook/IKTarget
-onready var grapplingHandOriginalScale : Vector3 = Vector3.ZERO
+@onready var grappleIKTarget : Position3D = $GrapplingHook/IKTarget
+@onready var grapplingHandOriginalScale : Vector3 = Vector3.ZERO
 
-onready var omniLight : OmniLight = $OmniLight
+@onready var omniLight : OmniLight3D = $OmniLight
 
 var grapplingHook_GrapplePosition : Vector3 = Vector3.ZERO
 var grapplingHook_IsHooked : bool = false
@@ -60,7 +59,7 @@ var playerWantsToReleaseGrapplingHook : bool = false
 #onready var hyperdebugui_gateway_startstop_button : Button = $HyperGodotDebugUI/HypercoreDebugPanel/HypercoreDebugContainer/GatewayStartStopButton
 #onready var hyperdebugui_gossipid_list : ItemList = get_tree().get_current_scene().get_node("HyperGodot").get_node("HyperGateway")
 
-onready var currentMap = get_tree().get_current_scene().get_node("Maps").get_child(0)
+@onready var currentMap = get_tree().get_current_scene().get_node("Maps").get_child(0)
 var originalOrigin : Vector3 = Vector3.ZERO
 var currentSpawnLocation : Vector3 = Vector3.ZERO
 
@@ -69,7 +68,6 @@ var moveNetworkUpdateAllowed : bool = true
 
 var playerWantsToRespawn : bool = false
 var jumpFloorDirection : Vector3 = Vector3(0,1,0)
-var playerCanJump : bool = false
 var playerWantsToJump : bool = false
 
 var playerWantsNewWorldEnvironment : bool = true
@@ -84,11 +82,12 @@ var kinematicVelocity : Vector3 = Vector3.ZERO
 
 var collisions : Dictionary = {}
 
-var Particles_Land = preload("res://game/player/particles.tscn")
+# TODO : Godot 4 cannot parse this particle format
+# var Particles_Land = preload("res://game/player/particles.tscn")
 
 func _ready():
 	# Backup Origin
-	originalOrigin = self.translation
+	originalOrigin = self.position
 	
 	# Spawn into Map
 	currentSpawnLocation = getSpawnLocationForMapName(currentMap.map_name)
@@ -160,31 +159,31 @@ func grapplingHook_UpdateVisualLine(length : float):
 		grappleVisualLine.translation.z = length / -1.80
 		
 func grapplingHook_UpdatePlayerVelocityAndReturnHookLength() -> float:
-	var grapple_speed : float = 0.5
-	var rest_length : float = 1
-	var max_grapple_speed : float = 2.75
+	# var grapple_speed : float = 0.5
+	# var rest_length : float = 1
+	# var max_grapple_speed : float = 2.75
 	
-	var player2hook := grapplingHook_GrapplePosition - translation # vector from player to hook
-	var length := player2hook.length()
-	if(grapplingHook_IsHooked):
+	# var player2hook := grapplingHook_GrapplePosition - translation # vector from player to hook
+	# var length := player2hook.length()
+	# if(grapplingHook_IsHooked):
 		# if we more than 4 away from line, don't dampen speed as much
-		if(length > 4):
-			kinematicVelocity *= .999
+		# if(length > 4):
+			# kinematicVelocity *= .999
 		# Otherwise dampen speed more
-		else:
-			kinematicVelocity *= .9
+		#else:
+		#	kinematicVelocity *= .9
 		
 		# Hook's law equation
-		var force := grapple_speed * (length - rest_length)
+		# var force := grapple_speed * (length - rest_length)
 		
 		# Clamp force to be less than max_grapple_speed
-		if abs(force) > max_grapple_speed:
-			force = max_grapple_speed
+		# if abs(force) > max_grapple_speed:
+			# force = max_grapple_speed
 		
 		# Preserve direction, but scale by force
-		kinematicVelocity += player2hook.normalized() * force
+		# kinematicVelocity += player2hook.normalized() * force
 	
-	return length
+	return 0.0 #  length
 	
 func grapplingHook_DisappearHand():
 	meshSkeletonHiddenHand.visible = false
@@ -221,7 +220,7 @@ func _physics_process(_delta):
 	
 	# Moving the character
 	var y_cache : float = kinematicVelocity.y
-	kinematicVelocity = kinematicVelocity.linear_interpolate(currentDirection * movementSpeed, movementAcceleration * _delta)
+	# kinematicVelocity = kinematicVelocity.linear_interpolate(currentDirection * movementSpeed, movementAcceleration * _delta)
 	kinematicVelocity.y = y_cache
 	
 	# Vertical velocity
@@ -238,11 +237,11 @@ func _physics_process(_delta):
 	# kinematicVelocity = move_and_slide(kinematicVelocity, Vector3.UP)
 	var bPrevOnFloor = is_on_floor()
 	y_cache = kinematicVelocity.y
-	kinematicVelocity = move_and_slide(kinematicVelocity, Vector3.UP, false, 4, 10.0, true)
+	# kinematicVelocity = move_and_slide(kinematicVelocity, Vector3.UP, false, 4, 10.0, true)
 	
 	if( !bPrevOnFloor and is_on_floor() and y_cache < -17.0):
-		var particles = Particles_Land.instance()
-		$Model.add_child(particles)
+		# var particles = Particles_Land.instance()
+		#$Model.add_child(particles)
 		$Model/Sound_Land.play()
 	
 	# Calculate Potential Jumping Animation
@@ -316,25 +315,6 @@ func playerCanJump() -> bool:
 	else:
 		return false
 
-func canJump(state : PhysicsDirectBodyState):
-	# Raycast from state to ground based on canJumpHeight and straight down (use self to exclude raycast from intersecting itself)
-	var hitDictionary : Dictionary = state.get_space_state().intersect_ray(global_transform.origin, canJumpHeight * jumpFloorDirection, [self])
-	# If the dictionary is empty, nothing was hit, so we can't jump
-	if hitDictionary.size() == 0:
-		return false
-	else:
-		var collider : StaticBody = hitDictionary.collider
-
-		var parent = collider.get_parent()
-		if(parent is MeshInstance):
-			if(true):
-				var material : SpatialMaterial = SpatialMaterial.new()
-				material.albedo_color = Color(0, 188, 0)
-				parent.material_override = material
-			else:
-				parent.material_override = null
-		return true
-
 func _on_Input_player_mousemotion_event(event):
 	clippedCameraHead.rotate_y(deg2rad(-event.relative.x * mouseSensitivity))
 	clippedCameraPivot.rotate_x(deg2rad(-event.relative.y * mouseSensitivity))
@@ -368,12 +348,6 @@ func _on_Input_player_restore_origin() -> void:
 	
 	hyperGossip.broadcast_event(EVENT_PLAYER_RESPAWNPLAYER, data)
 
-func _on_Input_player_change_physics_mode() -> void:
-	self.mode += 1
-	if(self.mode > RigidBody.MODE_KINEMATIC):
-		self.mode = RigidBody.MODE_RIGID
-
-
 func _on_Input_player_jump():
 	playerWantsToJump = true
 	hyperGossip.broadcast_event(EVENT_PLAYER_WANTSTOJUMP, getPlayerLocalCoreNetworkData() )
@@ -394,22 +368,6 @@ func _on_Input_player_release_grapplinghook():
 func _on_Input_player_toggle_light():
 	playerWantsToToggleLight = true
 	hyperGossip.broadcast_event(EVENT_PLAYER_TOGGLE_LIGHT, getPlayerLocalCoreNetworkData() )
-	
-	
-func _checkPlayerCanJump(newBody : PhysicsBody, addedBody : bool) -> void:
-	# Check if this is a new body added
-	if(addedBody):
-		# If we are adding a collision, check if we already can jump
-		if(playerCanJump):
-			return
-			
-	var hit = newBody.get_space_state().intersect_ray(Vector3(), canJumpHeight * -jumpFloorDirection, [self])
-	
-	# Check if any surfaces intersected
-	if hit.size() == 0:
-		playerCanJump = false
-	else:
-		playerCanJump = true
 
 func _on_Player_body_entered(body : Node) -> void:
 	if(!collisions.has(body.get_instance_id()) ):
@@ -427,7 +385,7 @@ func _on_MoveNetworkTimer_timeout():
 	
 func getPlayerLocalCoreNetworkData() -> Dictionary:
 	# TODO : Fix finding the local player, and get it out of player_core into player_core_local
-	var localPlayer : KinematicBody = get_tree().get_current_scene().get_node("Players").get_node("PlayerLocal")
+	var localPlayer : CharacterBody3D = get_tree().get_current_scene().get_node("Players").get_node("PlayerLocal")
 	var translation : Vector3 = localPlayer.translation
 	var direction : Vector3 = localPlayer.currentDirection
 
@@ -454,7 +412,7 @@ func getPlayerLocalCoreNetworkData() -> Dictionary:
 	
 func getPlayerLocalShootGrapplingHookData() -> Dictionary:
 	# TODO : Fix finding the local player, and get it out of player_core into player_core_local
-	var localPlayer : KinematicBody = get_tree().get_current_scene().get_node("Players").get_node("PlayerLocal")
+	var localPlayer : CharacterBody3D = get_tree().get_current_scene().get_node("Players").get_node("PlayerLocal")
 	var translation : Vector3 = localPlayer.translation
 	var direction : Vector3 = localPlayer.currentDirection
 

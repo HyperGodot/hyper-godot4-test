@@ -8,6 +8,40 @@
 
 config_version=5
 
+_global_script_classes=[{
+"base": "Node",
+"class": &"HTTPEventSource",
+"language": &"GDScript",
+"path": "res://hypergodot/http_event_source.gd"
+}, {
+"base": "HTTPEventSource",
+"class": &"HyperEventSource",
+"language": &"GDScript",
+"path": "res://hypergodot/hyper_request/hyper_event_source.gd"
+}, {
+"base": "Node",
+"class": &"HyperGateway",
+"language": &"GDScript",
+"path": "res://hypergodot/hyper_gateway/hyper_gateway.gd"
+}, {
+"base": "Node",
+"class": &"HyperGossip",
+"language": &"GDScript",
+"path": "res://hypergodot/hyper_gossip/hyper_gossip.gd"
+}, {
+"base": "HTTPRequest",
+"class": &"HyperRequest",
+"language": &"GDScript",
+"path": "res://hypergodot/hyper_request/hyper_request.gd"
+}]
+_global_script_class_icons={
+"HTTPEventSource": "",
+"HyperEventSource": "",
+"HyperGateway": "",
+"HyperGossip": "",
+"HyperRequest": ""
+}
+
 [application]
 
 config/name="Godot4Test"
