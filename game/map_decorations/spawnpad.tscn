@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cexotumax31qe"]
 
-[ext_resource type="PackedScene" path="res://assets/models/spawnpad/model_spawnpad.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://c1635h2imevxy" path="res://assets/models/spawnpad/model_spawnpad.tscn" id="1"]
 [ext_resource type="AudioStream" uid="uid://dry2bhs23ifnv" path="res://assets/sounds/ambience/spawnpad_hum.wav" id="3"]
 
 [node name="Spawnpad" type="Node3D"]

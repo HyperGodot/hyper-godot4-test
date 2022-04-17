@@ -60,7 +60,7 @@ func _input(event : InputEvent):
 	#if event.is_action_pressed("roll"):
 	#	emit_signal("player_action_roll")
 		
-	if event.is_action_pressed("restoreOrigin"):
+	if event.is_action_pressed("respawnPlayer"):
 		emit_signal("player_restore_origin")
 		
 	if event.is_action_pressed("toggleLight"):

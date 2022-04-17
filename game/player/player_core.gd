@@ -23,7 +23,7 @@ const EVENT_PLAYER_TOGGLE_LIGHT = 'player_toggle_light'
 
 @onready var meshNode : Node3D = $Model
 @onready var meshSkeletonNode : Skeleton3D = $Model/Armature/Skeleton3D
-@onready var meshSkeletalIKNode : SkeletonIK3D = $Model/Armature/Skeleton/SkeletonIK3D
+@onready var meshSkeletalIKNode : SkeletonIK3D = $Model/Armature/Skeleton3D/SkeletonIK3D
 @onready var meshSkeletonHiddenHand : MeshInstance3D = $Model/Armature/Skeleton/player001
 @onready var meshHandBone : int = meshSkeletonNode.find_bone("DEF-hand.R")
 @onready var meshHandBonePos : Transform3D = meshSkeletonNode.get_bone_pose(meshHandBone)
@@ -78,14 +78,14 @@ var h_input : float
 
 var snapVector : float
 
-var kinematicVelocity : Vector3 = Vector3.ZERO
-
 var collisions : Dictionary = {}
 
 # TODO : Godot 4 cannot parse this particle format
 # var Particles_Land = preload("res://game/player/particles.tscn")
 
 func _ready():
+	# Sanitize Velocity
+	velocity = Vector3.ZERO
 	# Backup Origin
 	originalOrigin = self.position
 	
@@ -210,7 +210,7 @@ func _physics_process(_delta):
 	# Check for New World Environment
 	if(playerWantsNewWorldEnvironment):
 		playerWantsNewWorldEnvironment = false
-		currentMap.updateMapWorldEnvironmentScene()
+		# currentMap.updateMapWorldEnvironmentScene()
 		
 	# Check for Toggle Light
 	if(playerWantsToToggleLight):
@@ -219,26 +219,26 @@ func _physics_process(_delta):
 		$Model/Sound_ToggleLight_1.play()
 	
 	# Moving the character
-	var y_cache : float = kinematicVelocity.y
-	# kinematicVelocity = kinematicVelocity.linear_interpolate(currentDirection * movementSpeed, movementAcceleration * _delta)
-	kinematicVelocity.y = y_cache
+	# Do NOT interpolate gravity / jumping / falling, so backup the y velocity
+	var y_cache : float = velocity.y
+	velocity = velocity.lerp(currentDirection * movementSpeed, movementAcceleration * _delta)
+	# Restore the y velocity after the interpolation, since we don't interpolate gravity / jumping / falling
+	velocity.y = y_cache
 	
 	# Vertical velocity
 	if(!grapplingHook_IsHooked):
 		# Apply Gravity
-		kinematicVelocity.y -= fallAcceleration * _delta
+		velocity.y -= fallAcceleration * _delta
 		# Check for a Jump
 		if(playerWantsToJump):
 			playerWantsToJump = false
 			if( playerCanJump() ):
-				kinematicVelocity.y = jumpHeight
+				velocity.y = jumpHeight
 				jumpingUp = true
 				$Model/Sound_Jump.play()
-	# kinematicVelocity = move_and_slide(kinematicVelocity, Vector3.UP)
 	var bPrevOnFloor = is_on_floor()
-	y_cache = kinematicVelocity.y
-	# kinematicVelocity = move_and_slide(kinematicVelocity, Vector3.UP, false, 4, 10.0, true)
-	
+	y_cache = velocity.y
+	move_and_slide()
 	if( !bPrevOnFloor and is_on_floor() and y_cache < -17.0):
 		# var particles = Particles_Land.instance()
 		#$Model.add_child(particles)
@@ -246,17 +246,17 @@ func _physics_process(_delta):
 	
 	# Calculate Potential Jumping Animation
 	if( !is_on_floor() ):
-		if(kinematicVelocity.y > 0.1):
+		if(velocity.y > 0.1):
 			$AnimationTree.set("parameters/air_transition/current", 0)
 			$AnimationTree.set("parameters/air_blend/blend_amount", -1)
-		elif(kinematicVelocity.y < -0.1):
+		elif(velocity.y < -0.1):
 			$AnimationTree.set("parameters/air_transition/current", 0)
 			$AnimationTree.set("parameters/air_blend/blend_amount", 0)
 	else:
 		$AnimationTree.set("parameters/air_transition/current", 1)
 	
 	# Calculate Running Animation
-	currentSpeed = ( (abs(kinematicVelocity.x) + abs(kinematicVelocity.z) - 7) / 7)
+	currentSpeed = ( (abs(velocity.x) + abs(velocity.z) - 7) / 7)
 	$AnimationTree.set("parameters/iwr_blend/blend_amount", currentSpeed)
 	
 	# Update Grappling Hook
@@ -302,7 +302,7 @@ func _physics_process(_delta):
 	# finalMovement = velocityAmount + finalgravityVelociy
 	
 func respawnPlayer():
-	kinematicVelocity = Vector3.ZERO
+	velocity = Vector3.ZERO
 	grapplingHook_IsHooked = false
 	playerWantsToShootGrapplingHook = false
 	playerWantsToReleaseGrapplingHook = true
@@ -348,7 +348,7 @@ func _on_Input_player_restore_origin() -> void:
 	
 	hyperGossip.broadcast_event(EVENT_PLAYER_RESPAWNPLAYER, data)
 
-func _on_Input_player_jump():
+func _on_input_player_jump():
 	playerWantsToJump = true
 	hyperGossip.broadcast_event(EVENT_PLAYER_WANTSTOJUMP, getPlayerLocalCoreNetworkData() )
 	
@@ -402,9 +402,9 @@ func getPlayerLocalCoreNetworkData() -> Dictionary:
 		"z": direction.z
 		},
 	"velocity": {
-		"x": kinematicVelocity.x,
-		"y": kinematicVelocity.y,
-		"z": kinematicVelocity.z
+		"x": velocity.x,
+		"y": velocity.y,
+		"z": velocity.z
 		}
 	}
 
@@ -429,9 +429,9 @@ func getPlayerLocalShootGrapplingHookData() -> Dictionary:
 		"z": direction.z
 		},
 	"velocity": {
-		"x": kinematicVelocity.x,
-		"y": kinematicVelocity.y,
-		"z": kinematicVelocity.z
+		"x": velocity.x,
+		"y": velocity.y,
+		"z": velocity.z
 		},
 	"grapple_position": {
 		"x": grapplingHook_GrapplePosition.x,
@@ -445,9 +445,9 @@ func getPlayerLocalShootGrapplingHookData() -> Dictionary:
 func playerCoreNetworkDataUpdate(data : Dictionary):
 	self.translation = Vector3(data.translation.x, data.translation.y, data.translation.z)
 	self.currentDirection = Vector3(data.direction.x, data.direction.y, data.direction.z)
-	self.kinematicVelocity = Vector3(data.velocity.x, data.velocity.y, data.velocity.z)
+	self.velocity = Vector3(data.velocity.x, data.velocity.y, data.velocity.z)
 
 func playerCoreNetworkDataUpdate_Types(_translation : Vector3, _currentDirection : Vector3, _kinematicVelocity : Vector3):
 	self.translation = _translation
 	self.currentDirection = _currentDirection
-	self.kinematicVelocity = _kinematicVelocity
+	self.velocity = _kinematicVelocity

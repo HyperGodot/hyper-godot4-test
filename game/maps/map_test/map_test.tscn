@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://njxw8k8p0stp"]
+
+[ext_resource type="PackedScene" path="res://assets/maps/map_test/asset_map_test.tscn" id="1"]
+[ext_resource type="Script" path="res://game/maps/map_core.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://bvsite1k7u1j5" path="res://game/map_decorations/spawnpad_nocollision.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://game/map_decorations/teleport.scn" id="4"]
+[ext_resource type="PackedScene" path="res://assets/maps/map_test/map_test_environment.scn" id="5"]
+[ext_resource type="AudioStream" uid="uid://7mme5t5cy2f3" path="res://assets/sounds/ambience/howling_wind.mp3" id="6"]
+
+[sub_resource type="BoxShape3D" id="35"]
+
+[node name="map_test" type="Node3D"]
+script = ExtResource( "2" )
+map_name = "map_test"
+
+[node name="WorldEnvironment" parent="." instance=ExtResource( "5" )]
+
+[node name="asset_map_test" parent="." instance=ExtResource( "1" )]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.9681, -28.9587)
+stream = ExtResource( "6" )
+unit_size = 5.0
+max_db = 1.0
+pitch_scale = 1.36
+autoplay = true
+max_distance = 500.0
+
+[node name="Teleporters" type="Node3D" parent="."]
+
+[node name="Teleporter_1" parent="Teleporters" instance=ExtResource( "4" )]
+transform = Transform3D(0.655427, 0, -0.755259, 0, 1, 0, 0.755259, 0, 0.655427, -15.0371, -3.75616, -37.6492)
+
+[node name="PlayerSpawnNodes" type="Node3D" parent="."]
+
+[node name="Spawnpad_1" parent="PlayerSpawnNodes" instance=ExtResource( "3" )]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.673, 2.446, -3.56)
+
+[node name="Spawnpad_2" parent="PlayerSpawnNodes" instance=ExtResource( "3" )]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.238, -3.872, -77.137)
+
+[node name="Spawnpad_3" parent="PlayerSpawnNodes" instance=ExtResource( "3" )]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -13.621, -3.482, 9.865)
+
+[node name="Spawnpad_4" parent="PlayerSpawnNodes" instance=ExtResource( "3" )]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -21.4394, -3.87374, -17.1152)
+
+[node name="Spawnpad_5" parent="PlayerSpawnNodes" instance=ExtResource( "3" )]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -9.88113, 8.96284, -17.1152)
+
+[node name="Area" type="Area3D" parent="."]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Area"]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 80, 0, 0, -23.7039)
+shape = SubResource( "35" )
+
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered" binds= ["map_test"]]

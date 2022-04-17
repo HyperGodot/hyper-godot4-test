@@ -27,10 +27,10 @@ func _ready():
 	hyperGossip = get_tree().get_current_scene().get_node("HyperGodot").get_node("HyperGossip")
 
 func _process(_delta):
-	currentmapValue.text = String(playerNode.currentMap.map_name)
-	inputValue.text = String(playerNode.currentDirection)
-	velocityValue.text = String(playerNode.kinematicVelocity)
-	speedValue.text = String(playerNode.currentSpeed)
+	currentmapValue.text = str(playerNode.currentMap.map_name)
+	inputValue.text = str(playerNode.currentDirection)
+	velocityValue.text = str(playerNode.velocity)
+	speedValue.text = str(playerNode.currentSpeed)
 	if( playerNode.is_on_floor() ):
 		onfloorValue.text = "Yes"
 	else:

@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://bvsite1k7u1j5"]
 
-[ext_resource path="res://game/map_decorations/spawnpad.tscn" type="PackedScene" id=1]
-[ext_resource path="res://game/map_decorations/spawnpad_nocollision.gd" type="Script" id=2]
+[ext_resource type="PackedScene" uid="uid://cexotumax31qe" path="res://game/map_decorations/spawnpad.tscn" id="1"]
+[ext_resource type="Script" path="res://game/map_decorations/spawnpad_nocollision.gd" id="2"]
 
-[node name="Spawnpad" instance=ExtResource( 1 )]
-script = ExtResource( 2 )
+[node name="Spawnpad" instance=ExtResource( "1" )]
+script = ExtResource( "2" )

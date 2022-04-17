@@ -1,5 +1,7 @@
 extends Node3D
 
+@onready var collisionShape : CollisionShape3D = $spawnpad/spawn_pad/spawn_pad/CollisionShape3D
+
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -8,10 +10,9 @@ extends Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# Find the Collision Mesh and Remove it!
-	var collision : CollisionShape3D = find_node("shape0")
-	if(collision != null):
-		collision.disabled = true
+	# Disable Collision Mesh
+	if(collisionShape != null):
+		collisionShape.disabled = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
