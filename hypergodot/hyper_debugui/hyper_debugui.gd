@@ -2,11 +2,11 @@ extends Control
 
 signal gossip_update_rate_changed(seconds)
 
-onready var lGossipUpdateRate : Label = $HypercoreDebugPanel/HypercoreDebugContainer/GossipUpdateRate
-onready var gatewayStartStopButton : Button = $HypercoreDebugPanel/HypercoreDebugContainer/GatewayStartStopButton
-onready var gatewayStatus : Label = $HypercoreDebugPanel/HypercoreDebugContainer/GatewayStatus_Value
-onready var gossipURL : Label = $HypercoreDebugPanel/HypercoreDebugContainer/GossipURL_Value
-onready var gossipIDList : ItemList = $HypercoreDebugPanel/HypercoreDebugContainer/GossipIDList_Value
+@onready var lGossipUpdateRate : Label = $HypercoreDebugPanel/HypercoreDebugContainer/GossipUpdateRate
+@onready var gatewayStartStopButton : Button = $HypercoreDebugPanel/HypercoreDebugContainer/GatewayStartStopButton
+@onready var gatewayStatus : Label = $HypercoreDebugPanel/HypercoreDebugContainer/GatewayStatus_Value
+@onready var gossipURL : Label = $HypercoreDebugPanel/HypercoreDebugContainer/GossipURL_Value
+@onready var gossipIDList : ItemList = $HypercoreDebugPanel/HypercoreDebugContainer/GossipIDList_Value
 
 var hyperGateway : HyperGateway
 var hyperGossip : HyperGossip
@@ -21,7 +21,7 @@ func _process(_delta):
 	
 func updateGatewayStatus() -> void:
 	if(hyperGateway.getIsGatewayRunning() ):
-		gatewayStatus.text = "Listening on Port " + String( hyperGateway.getGatewayPort() ) + " (PID " + String( hyperGateway.getGatewayPID() ) + ")"
+		gatewayStatus.text = "Listening on Port " + str( hyperGateway.getGatewayPort() ) + " (PID " + str( hyperGateway.getGatewayPID() ) + ")"
 		gossipURL.text = hyperGossip.url
 		gatewayStartStopButton.text = "Stop Gateway"
 	else:
@@ -42,7 +42,7 @@ func _on_GatewayStartStopButton_button_up() -> void:
 			hyperGateway.start()
 
 func _on_GossipUpdateRate_Value_value_changed(value : float) -> void:
-	lGossipUpdateRate.text = "Snapshot in " + String(value) + " Seconds: "
+	lGossipUpdateRate.text = "Snapshot in " + str(value) + " Seconds: "
 	emit_signal("gossip_update_rate_changed", value)
 
 

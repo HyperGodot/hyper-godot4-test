@@ -1,8 +1,8 @@
-extends Spatial
+extends Node3D
 
-export var teleportation_destination : String = ""
+@export var teleportation_destination : String = ""
 
-onready var mapsNode : Node = get_tree().get_current_scene().get_node("Maps")
+@onready var mapsNode : Node = get_tree().get_current_scene().get_node("Maps")
 
 
 # Declare member variables here. Examples:
@@ -48,5 +48,5 @@ func _on_CollisionShape_gameplay_entered():
 
 
 func _on_Hitbox_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	if(body is KinematicBody):
+	if(body is CharacterBody3D):
 		tryMapChange(teleportation_destination, true, body)

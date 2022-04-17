@@ -4,7 +4,7 @@ extends Node
 @onready var clippedCameraHead : Node3D = get_node("../CameraHead")
 @onready var clippedCameraPivot : Node3D = get_node("../CameraHead/CameraPivot")
 
-signal player_restore_origin()
+signal player_respawn_player()
 signal player_mousemotion_event(event)
 signal player_jump()
 # signal player_roll()
@@ -61,7 +61,7 @@ func _input(event : InputEvent):
 	#	emit_signal("player_action_roll")
 		
 	if event.is_action_pressed("respawnPlayer"):
-		emit_signal("player_restore_origin")
+		emit_signal("player_respawn_player")
 		
 	if event.is_action_pressed("toggleLight"):
 		emit_signal("player_toggle_light")

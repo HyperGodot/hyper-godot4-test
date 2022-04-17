@@ -315,13 +315,13 @@ func playerCanJump() -> bool:
 	else:
 		return false
 
-func _on_Input_player_mousemotion_event(event):
+func _on_input_player_mousemotion_event(event):
 	clippedCameraHead.rotate_y(deg2rad(-event.relative.x * mouseSensitivity))
 	clippedCameraPivot.rotate_x(deg2rad(-event.relative.y * mouseSensitivity))
 	clippedCameraPivot.rotation.x = clamp(clippedCameraPivot.rotation.x, deg2rad(-89), deg2rad(89))
 
 
-func _on_Input_player_move(direction : Vector3):
+func _on_input_player_move(direction : Vector3):
 	currentDirection = direction
 	
 	if(moveNetworkUpdateAllowed):
@@ -332,7 +332,7 @@ func _on_Input_player_move(direction : Vector3):
 	#currentDirection = Vector3(direction.x, 0, direction.z).rotated(Vector3.UP, h_rot).normalized()
 
 
-func _on_Input_player_restore_origin() -> void:
+func _on_input_player_respawn_player() -> void:
 	playerWantsToRespawn = true
 	var spawnLocation : Vector3 = getSpawnLocationForMapName(currentMap.map_name)
 	currentSpawnLocation = spawnLocation
@@ -365,7 +365,7 @@ func _on_Input_player_release_grapplinghook():
 			playerWantsToReleaseGrapplingHook = true
 			hyperGossip.broadcast_event(EVENT_PLAYER_RELEASE_GRAPPLINGHOOK, getPlayerLocalCoreNetworkData() )
 			
-func _on_Input_player_toggle_light():
+func _on_input_player_toggle_light():
 	playerWantsToToggleLight = true
 	hyperGossip.broadcast_event(EVENT_PLAYER_TOGGLE_LIGHT, getPlayerLocalCoreNetworkData() )
 
@@ -385,16 +385,16 @@ func _on_MoveNetworkTimer_timeout():
 	
 func getPlayerLocalCoreNetworkData() -> Dictionary:
 	# TODO : Fix finding the local player, and get it out of player_core into player_core_local
-	var localPlayer : CharacterBody3D = get_tree().get_current_scene().get_node("Players").get_node("PlayerLocal")
-	var translation : Vector3 = localPlayer.translation
+	var localPlayer : CharacterBody3D = get_tree().get_current_scene().get_node("Players").get_node("PlayerCoreLocal")
+	var position : Vector3 = localPlayer.position
 	var direction : Vector3 = localPlayer.currentDirection
 
 	var data : Dictionary = {
 	#"profile": profile,
-	"translation": {
-		"x": translation.x,
-		"y": translation.y,
-		"z": translation.z
+	"position": {
+		"x": position.x,
+		"y": position.y,
+		"z": position.z
 		},
 	"direction": {
 		"x": direction.x,
@@ -412,16 +412,16 @@ func getPlayerLocalCoreNetworkData() -> Dictionary:
 	
 func getPlayerLocalShootGrapplingHookData() -> Dictionary:
 	# TODO : Fix finding the local player, and get it out of player_core into player_core_local
-	var localPlayer : CharacterBody3D = get_tree().get_current_scene().get_node("Players").get_node("PlayerLocal")
-	var translation : Vector3 = localPlayer.translation
+	var localPlayer : CharacterBody3D = get_tree().get_current_scene().get_node("Players").get_node("PlayerCoreLocal")
+	var position : Vector3 = localPlayer.position
 	var direction : Vector3 = localPlayer.currentDirection
 
 	var data : Dictionary = {
 	#"profile": profile,
-	"translation": {
-		"x": translation.x,
-		"y": translation.y,
-		"z": translation.z
+	"position": {
+		"x": position.x,
+		"y": position.y,
+		"z": position.z
 		},
 	"direction": {
 		"x": direction.x,
@@ -443,11 +443,11 @@ func getPlayerLocalShootGrapplingHookData() -> Dictionary:
 	return data
 
 func playerCoreNetworkDataUpdate(data : Dictionary):
-	self.translation = Vector3(data.translation.x, data.translation.y, data.translation.z)
+	self.position = Vector3(data.position.x, data.position.y, data.position.z)
 	self.currentDirection = Vector3(data.direction.x, data.direction.y, data.direction.z)
 	self.velocity = Vector3(data.velocity.x, data.velocity.y, data.velocity.z)
 
-func playerCoreNetworkDataUpdate_Types(_translation : Vector3, _currentDirection : Vector3, _kinematicVelocity : Vector3):
-	self.translation = _translation
+func playerCoreNetworkDataUpdate_Types(_position : Vector3, _currentDirection : Vector3, _kinematicVelocity : Vector3):
+	self.position = _position
 	self.currentDirection = _currentDirection
 	self.velocity = _kinematicVelocity
