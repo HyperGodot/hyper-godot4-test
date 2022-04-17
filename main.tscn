@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bktxghmjd4nc"]
+[gd_scene load_steps=4 format=3 uid="uid://bktxghmjd4nc"]
 
-[ext_resource type="PackedScene" uid="uid://ds36d5iqtsvuh" path="res://game/player/player_core_local.tscn" id="1_2bdf3"]
-[ext_resource type="PackedScene" uid="uid://c55u58gv5o78n" path="res://game/maps/map_test/map_test.scn" id="1_xau7j"]
+[ext_resource type="PackedScene" uid="uid://dp00cy13f0a6k" path="res://assets/maps/map_test/asset_map_test.tscn" id="1_6vstd"]
 [ext_resource type="PackedScene" uid="uid://cue2rke35i36o" path="res://hypergodot/hyper_gateway/hyper_gateway.tscn" id="2_p865q"]
 [ext_resource type="Script" path="res://hypergodot/hyper_gossip/hyper_gossip.gd" id="3_g8xkj"]
 
@@ -9,12 +8,7 @@
 
 [node name="Maps" type="Node3D" parent="."]
 
-[node name="map_test" parent="Maps" instance=ExtResource( "1_xau7j" )]
-
-[node name="Players" type="Node" parent="."]
-
-[node name="PlayerCoreLocal" parent="Players" instance=ExtResource( "1_2bdf3" )]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.758439, 0)
+[node name="asset_map_test" parent="Maps" instance=ExtResource( "1_6vstd" )]
 
 [node name="HyperGodot" type="Node" parent="."]
 
