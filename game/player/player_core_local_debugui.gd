@@ -59,8 +59,6 @@ func tryMapChange(mapChangeName : String, sendGossip : bool):
 			mapNode = get_tree().get_current_scene().map_cyber
 		elif(mapChangeName == "map_cyber1"):
 			mapNode = get_tree().get_current_scene().map_cyber1
-		var newMap = mapNode.instance()
-		#currentMapNode.add_child(newMap)
 		# Update Current Map
 		playerNode.currentMap = get_tree().get_current_scene().get_node("CurrentMap").get_child(1)
 		# Update Actual Map

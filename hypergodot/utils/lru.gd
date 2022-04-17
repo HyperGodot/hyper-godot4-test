@@ -12,13 +12,11 @@ func _init(new_max = DEFAULT_SIZE):
 
 func has(value):
 	return value in values
-	pass
 
 func track(value):
 	var time = OS.get_system_time_msecs()
 	
 	values[value] = time
-	pass
 
 func is_full():
 	return size() > max_size
@@ -29,7 +27,6 @@ func size():
 func clear_oldest():
 	var oldest = get_oldest()
 	values.erase(oldest)
-	pass
 	
 func get_oldest():
 	var oldestTime = OS.get_system_time_msecs()

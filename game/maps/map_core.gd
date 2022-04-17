@@ -49,9 +49,9 @@ func checkAndSetChildrenGrapplingHookMask(_Node, indentLevel : int):
 		checkAndSetChildrenGrapplingHookMask(_Node.get_child(i), indentLevel + 1)
 
 
-func _on_Area_body_entered(body, map_name):
+func _on_Area_body_entered(body, _map_name):
 	if(body is CharacterBody3D):
-		var mapNode = get_tree().get_current_scene().find_node(map_name, true, false)
+		var mapNode = get_tree().get_current_scene().find_node(_map_name, true, false)
 		body.currentMap = mapNode
 		body.playerWantsNewWorldEnvironment = true
 		

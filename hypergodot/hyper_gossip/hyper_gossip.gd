@@ -81,9 +81,9 @@ func _on_broadcast_completed(_result, _response_code, _headers, _body):
 	var next = requestQueue.pop_front()
 	_enqueue_broadcast_request(next.reqURL, next.body)
 
-func rebroadcast(event):
+func rebroadcast(_event):
 	var reqURL = _get_extension_url()
-	var body = JSON.print(event)
+	var body = JSON.print(_event)
 	_enqueue_broadcast_request(reqURL, body)
 
 func broadcast_event(type: String, data):
@@ -114,11 +114,11 @@ func _generateEvent(type, data):
 		"data": data
 	}
 
-func _handle_event(event):
-	var type = event.type
-	var data = event.data
-	var id = event.id
-	var from = event.from
+func _handle_event(_event):
+	var type = _event.type
+	var data = _event.data
+	var id = _event.id
+	var from = _event.from
 	
 	if seen_messages.has(id):
 		return
@@ -126,11 +126,11 @@ func _handle_event(event):
 	seen_messages.track(id)
 	
 	emit_signal("event", type, data, from)
-	rebroadcast(event)
+	rebroadcast(_event)
 
-func _on_event(data, event, id):
+func _on_event(data, _event, id):
 	# Ignore events for other extensions
-	if event != extension_name: return
+	if _event != extension_name: return
 
 	var parsed = jsonInstance.parse(data)
 	
@@ -157,9 +157,9 @@ func _on_peer_list(_result, response_code, _headers, body):
 		printerr("Unable to parse Peer List" + String(parsed.error_line))
 		return
 		
-	var peers = parsed.result
+	var _peers = parsed.result
 
-	emit_signal("peers", peers)
+	emit_signal("peers", _peers)
 
 func _get_extension_url_to_peer(peer):
 	return url + '$/extensions/' + extension_name + '/' + peer
