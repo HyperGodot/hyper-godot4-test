@@ -83,7 +83,8 @@ func _on_broadcast_completed(_result, _response_code, _headers, _body):
 
 func rebroadcast(_event):
 	var reqURL = _get_extension_url()
-	var body = JSON.print(_event)
+	var body  = jsonInstance.stringify(_event)
+	# var body = JSON.print(_event)
 	_enqueue_broadcast_request(reqURL, body)
 
 func broadcast_event(type: String, data):
