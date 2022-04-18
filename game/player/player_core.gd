@@ -96,8 +96,8 @@ func _ready():
 	# Get HyperGossip
 	hyperGossip = get_tree().get_current_scene().get_node("HyperGodot").get_node("HyperGossip")
 	
-func snapShotUpdate(_translation : Vector3, _meshDirection : Vector3, _lookingDirection : Vector3):
-	self.translation = _translation
+func snapShotUpdate(_position : Vector3, _meshDirection : Vector3, _lookingDirection : Vector3):
+	self.position = _position
 	self.meshNode.rotation = _meshDirection
 	self.currentDirection = _lookingDirection
 
