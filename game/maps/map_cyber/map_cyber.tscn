@@ -1,13 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bnmqs28j8wtp1"]
+[gd_scene load_steps=7 format=3 uid="uid://bnmqs28j8wtp1"]
 
 [ext_resource type="PackedScene" path="res://assets/maps/map_cyber/level0.scn" id="2"]
 [ext_resource type="PackedScene" uid="uid://cexotumax31qe" path="res://game/map_decorations/spawnpad.tscn" id="3"]
 [ext_resource type="Script" path="res://game/maps/map_core.gd" id="4"]
 [ext_resource type="PackedScene" uid="uid://csegj0tubaqd1" path="res://game/map_decorations/teleport.scn" id="5"]
-[ext_resource type="PackedScene" path="res://assets/maps/map_cyber/map_cyber_environment.scn" id="6"]
-
-[sub_resource type="VoxelGIData" id="1"]
-dynamic_range = 4.0
+[ext_resource type="PackedScene" uid="uid://dcsnge5anty05" path="res://assets/maps/map_cyber/map_cyber_environment.scn" id="6"]
 
 [sub_resource type="BoxShape3D" id="2"]
 size = Vector3(500, 500, 500)
@@ -17,6 +14,9 @@ script = ExtResource( "4" )
 map_name = "map_cyber"
 
 [node name="WorldEnvironment" parent="." instance=ExtResource( "6" )]
+
+[node name="DirectionalLight3D" parent="WorldEnvironment" index="1"]
+transform = Transform3D(0.938514, -0.30723, -0.157483, -0.0810201, -0.639414, 0.764582, -0.3356, -0.704811, -0.624991, 0, 0, 0)
 
 [node name="asset_map_cyber" parent="." instance=ExtResource( "2" )]
 
@@ -854,11 +854,6 @@ gi_mode = 1
 [node name="Slice005" parent="asset_map_cyber/marblesplosion/Empty002" index="58"]
 gi_mode = 1
 
-[node name="GIProbe" type="VoxelGI" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.48052, 2.93851, 0)
-extents = Vector3(40, 40, 100)
-data = SubResource( "1" )
-
 [node name="PlayerSpawnNodes" type="Node3D" parent="."]
 
 [node name="Spawnpad2" parent="PlayerSpawnNodes" instance=ExtResource( "3" )]
@@ -883,4 +878,5 @@ shape = SubResource( "2" )
 
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered" binds= ["map_cyber"]]
 
+[editable path="WorldEnvironment"]
 [editable path="asset_map_cyber"]

@@ -15,6 +15,7 @@
 [node name="map_test" parent="Maps" instance=ExtResource( "1_0op02" )]
 
 [node name="map_cyber" parent="Maps" instance=ExtResource( "2_7tyrq" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 468.212, 0, -992.677)
 
 [node name="Players" type="Node" parent="."]
 
