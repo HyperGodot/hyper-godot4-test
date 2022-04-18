@@ -24,7 +24,7 @@ const EVENT_PLAYER_TOGGLE_LIGHT = 'player_toggle_light'
 @onready var meshNode : Node3D = $Model
 @onready var meshSkeletonNode : Skeleton3D = $Model/Armature/Skeleton3D
 @onready var meshSkeletalIKNode : SkeletonIK3D = $Model/Armature/Skeleton3D/SkeletonIK3D
-@onready var meshSkeletonHiddenHand : MeshInstance3D = $Model/Armature/Skeleton/player001
+@onready var meshSkeletonHiddenHand : MeshInstance3D = $Model/Armature/Skeleton3D/player001
 @onready var meshHandBone : int = meshSkeletonNode.find_bone("DEF-hand.R")
 @onready var meshHandBonePos : Transform3D = meshSkeletonNode.get_bone_pose(meshHandBone)
 
@@ -133,7 +133,7 @@ func grapplingHook_CheckActivation():
 		grapplingHook_IsHooked = true
 		grappleVisualLine.show()
 		$Model/Sound_Shoot_GrapplingHook_2.play()
-		grappleIKTarget.translation = grapplingHook_GrapplePosition
+		grappleIKTarget.position = grapplingHook_GrapplePosition
 		grapplingHook_DisappearHand()
 		
 	elif(playerWantsToReleaseGrapplingHook):
@@ -156,7 +156,7 @@ func grapplingHook_UpdateVisualLine(length : float):
 	if(grapplingHook_IsHooked):
 		grappleLineHelper.look_at(grapplingHook_GrapplePosition, Vector3.UP)
 		grappleVisualLine.height = length
-		grappleVisualLine.translation.z = length / -1.80
+		grappleVisualLine.position.z = length / -1.80
 		
 func grapplingHook_UpdatePlayerVelocityAndReturnHookLength() -> float:
 	# var grapple_speed : float = 0.5
@@ -352,14 +352,14 @@ func _on_input_player_jump():
 	playerWantsToJump = true
 	hyperGossip.broadcast_event(EVENT_PLAYER_WANTSTOJUMP, getPlayerLocalCoreNetworkData() )
 	
-func _on_Input_player_shoot_grapplinghook():
+func _on_input_player_shoot_grapplinghook():
 	if( Input.get_mouse_mode() != Input.MOUSE_MODE_VISIBLE ):
 		if( grappleHookCast.is_colliding() ):
 			playerWantsToShootGrapplingHook = true
 			grapplingHook_GrapplePosition = grappleHookCast.get_collision_point()
 			hyperGossip.broadcast_event(EVENT_PLAYER_SHOOT_GRAPPLINGHOOK, getPlayerLocalShootGrapplingHookData() )
 			
-func _on_Input_player_release_grapplinghook():
+func _on_input_player_release_grapplinghook():
 	if( Input.get_mouse_mode() != Input.MOUSE_MODE_VISIBLE ):
 		if(grapplingHook_IsHooked):
 			playerWantsToReleaseGrapplingHook = true
@@ -386,15 +386,15 @@ func _on_MoveNetworkTimer_timeout():
 func getPlayerLocalCoreNetworkData() -> Dictionary:
 	# TODO : Fix finding the local player, and get it out of player_core into player_core_local
 	var localPlayer : CharacterBody3D = get_tree().get_current_scene().get_node("Players").get_node("PlayerCoreLocal")
-	var position : Vector3 = localPlayer.position
+	var _position : Vector3 = localPlayer.position
 	var direction : Vector3 = localPlayer.currentDirection
 
 	var data : Dictionary = {
 	#"profile": profile,
 	"position": {
-		"x": position.x,
-		"y": position.y,
-		"z": position.z
+		"x": _position.x,
+		"y": _position.y,
+		"z": _position.z
 		},
 	"direction": {
 		"x": direction.x,
@@ -413,15 +413,15 @@ func getPlayerLocalCoreNetworkData() -> Dictionary:
 func getPlayerLocalShootGrapplingHookData() -> Dictionary:
 	# TODO : Fix finding the local player, and get it out of player_core into player_core_local
 	var localPlayer : CharacterBody3D = get_tree().get_current_scene().get_node("Players").get_node("PlayerCoreLocal")
-	var position : Vector3 = localPlayer.position
+	var _position : Vector3 = localPlayer.position
 	var direction : Vector3 = localPlayer.currentDirection
 
 	var data : Dictionary = {
 	#"profile": profile,
 	"position": {
-		"x": position.x,
-		"y": position.y,
-		"z": position.z
+		"x": _position.x,
+		"y": _position.y,
+		"z": _position.z
 		},
 	"direction": {
 		"x": direction.x,

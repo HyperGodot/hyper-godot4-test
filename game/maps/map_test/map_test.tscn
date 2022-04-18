@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://t6bfklm2qebp" path="res://assets/maps/map_test/asset_map_test.tscn" id="1"]
 [ext_resource type="Script" path="res://game/maps/map_core.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://bvsite1k7u1j5" path="res://game/map_decorations/spawnpad_nocollision.tscn" id="3"]
-[ext_resource type="Environment" uid="uid://clgc7i2qnn27q" path="res://game/maps/map_test/map_test_environment.res" id="3_0xp3k"]
+[ext_resource type="Environment" uid="uid://c6rnccvc2njyc" path="res://game/maps/map_test/map_test_environment.res" id="3_0xp3k"]
 [ext_resource type="PackedScene" uid="uid://csegj0tubaqd1" path="res://game/map_decorations/teleport.scn" id="4"]
 [ext_resource type="PackedScene" uid="uid://b5dqfyr3ynwt6" path="res://game/maps/map_test/map_test_environment.scn" id="5"]
 [ext_resource type="AudioStream" uid="uid://7mme5t5cy2f3" path="res://assets/sounds/ambience/howling_wind.mp3" id="6"]
