@@ -106,7 +106,8 @@ func setupGateway():
 	print("Starting gateway from ",path, " with args ", args)
 
 	# Start the hyper-gateway in a process
-	processPID = OS.execute(path, args)
+	# processPID = OS.execute(path, args)
+	processPID = OS.create_process(path, args)
 
 	# Sleep for a bit while the gateway loads
 	# TODO: Find a better indicator like polling the HTTP server socket
@@ -213,7 +214,7 @@ func downloadLatest(assets, version):
 	for asset in assets:
 		if asset.name != executibleName: continue
 		toDownload = asset
-	if !toDownload:
+	if toDownload.size() < 1:
 		printerr("Unable to find valid executible in latest release")
 		return
 

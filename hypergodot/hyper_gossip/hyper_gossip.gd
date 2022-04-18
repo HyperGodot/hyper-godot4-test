@@ -93,12 +93,12 @@ func broadcast_event(type: String, data):
 	if(hyperGateway != null):
 		if( hyperGateway.getIsGatewayRunning() ):
 			var reqURL = _get_extension_url()
-			var body = JSON.print(_generateEvent(type, data))
+			var body = jsonInstance.stringify(_generateEvent(type, data))
 			_enqueue_broadcast_request(reqURL, body)
 	
 func send_to_peer(peer, type, data):
 	var reqURL = _get_extension_url_to_peer(peer)
-	var body = JSON.print(_generateEvent(type, data))
+	var body = jsonInstance.stringify(_generateEvent(type, data))
 	_enqueue_broadcast_request(reqURL, body)
 
 func load_peers():
@@ -151,13 +151,16 @@ func _on_peer_list(_result, response_code, _headers, body):
 		printerr('Error listing peers ', response_code, " ", text)
 		return
 
+	# var parsed = jsonInstance.parse(text)
+	# json.parse now returns a generic Error, no longer JSONParseResult object.
 	var parsed = jsonInstance.parse(text)
 
-	if parsed.error != OK:
+	# if parsed.error != OK:
+	if parsed != OK:
 		printerr("Unable to parse Peer List" + String(parsed.error_line))
 		return
 		
-	var _peers = parsed.result
+	var _peers = jsonInstance.get_data()
 
 	emit_signal("peers", _peers)
 

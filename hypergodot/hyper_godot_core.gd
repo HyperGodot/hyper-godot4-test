@@ -33,7 +33,7 @@ func _process(_delta):
 func _perform_setup():
 	hyperGossip.start_listening()
 	
-func _on_HyperGateway_started_gateway(_pid : int):
+func _on_hyper_gateway_started_gateway(_pid : int):
 	if !hyperGateway:
 		hyperGateway = get_tree().get_current_scene().get_node("HyperGodot").get_node("HyperGateway")
 	if !hyperGossip:
@@ -44,7 +44,7 @@ func _on_HyperGateway_started_gateway(_pid : int):
 		hyperDebugUI.updateGatewayStatus()
 	_perform_setup()
 
-func _on_HyperGateway_stopped_gateway():
+func _on_hyper_gateway_stopped_gateway():
 	if(hyperDebugUI):
 		hyperDebugUI.updateGatewayStatus()
 
@@ -61,12 +61,12 @@ func _on_LocalSnapshotTimer_timeout():
 		
 		hyperGossip.broadcast_event(EVENT_PLAYER_SNAPSHOT, snapShotData)
 		
-func _on_HyperGossip_listening(_extension_name):
+func _on_hyper_gossip_listening(_extension_name):
 	var snapShotData : Dictionary = getPlayerLocalSnapshotData()
 	hyperGossip.broadcast_event(EVENT_PLAYER_SNAPSHOT, snapShotData)
 
 # TODO : Get these out of here and into player_core or player_core_remote
-func _on_HyperGossip_event(type, data, from):
+func _on_hyper_gossip_event(type, data, from):
 	if type == EVENT_PLAYER_SNAPSHOT:
 		updatePlayerWithSnapshot(data, from)
 	elif type == EVENT_PLAYER_WANTSTOJUMP:
@@ -158,17 +158,17 @@ func updatePlayer_direction(data, id):
 	remotePlayer.playerCoreNetworkDataUpdate(data)
 
 func getPlayerLocalSnapshotData() -> Dictionary:
-	var snapshotPlayer : KinematicBody = get_tree().get_current_scene().get_node("Players").get_node("PlayerLocal")
-	var translation : Vector3 = snapshotPlayer.translation
+	var snapshotPlayer : CharacterBody3D = get_tree().get_current_scene().get_node("Players").get_node("PlayerCoreLocal")
+	var position : Vector3 = snapshotPlayer.position
 	var meshDirection : Vector3 = Vector3(0, snapshotPlayer.meshNode.rotation.y, 0)
 	var lookingDirection : Vector3 = snapshotPlayer.currentDirection
 	
 	var data : Dictionary = {
 		#"profile": profile,
-		"translation": {
-			"x": translation.x,
-			"y": translation.y,
-			"z": translation.z
+		"position": {
+			"x": position.x,
+			"y": position.y,
+			"z": position.z
 		},
 		"meshDirection": {
 			"x": meshDirection.x,

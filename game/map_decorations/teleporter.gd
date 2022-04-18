@@ -35,7 +35,7 @@ func tryMapChange(mapChangeName : String, sendGossip : bool, playerNode):
 		playerNode.playerWantsNewWorldEnvironment = true
 		
 		if(sendGossip):
-			var data : Dictionary = {
+			var _data : Dictionary = {
 			"map": {
 				"name": mapChangeName
 				}
@@ -46,7 +46,6 @@ func tryMapChange(mapChangeName : String, sendGossip : bool, playerNode):
 func _on_CollisionShape_gameplay_entered():
 	pass # Replace with function body.
 
-
-func _on_Hitbox_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+func _on_hitbox_body_entered(body):
 	if(body is CharacterBody3D):
 		tryMapChange(teleportation_destination, true, body)

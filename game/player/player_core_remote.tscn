@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqgsa6ffgsmdm"]
+
+[ext_resource type="PackedScene" uid="uid://th4ivyj7adfg" path="res://game/player/player_core.tscn" id="1"]
+
+[node name="PlayerCoreRemote" instance=ExtResource( "1" )]

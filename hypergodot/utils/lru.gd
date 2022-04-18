@@ -14,7 +14,7 @@ func has(value):
 	return value in values
 
 func track(value):
-	var time = OS.get_system_time_msecs()
+	var time = Time.get_ticks_msec()
 	
 	values[value] = time
 
@@ -29,7 +29,7 @@ func clear_oldest():
 	values.erase(oldest)
 	
 func get_oldest():
-	var oldestTime = OS.get_system_time_msecs()
+	var oldestTime = Time.get_ticks_msec()
 	var oldestValue = null
 	for value in values.keys():
 		var valueTime = values[value]

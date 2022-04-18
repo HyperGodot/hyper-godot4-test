@@ -122,7 +122,7 @@ func grapplingHook_Process():
 	grapplingHook_UpdateVisualLine(length)
 	# TODO : BIG Hack to prevent running on remote players
 	var _name = self.name
-	if(self.name == "PlayerLocal"):
+	if(self.name == "PlayerCoreLocal"):
 		grapplingHook_UpdateVisualPoint()
 	
 func grapplingHook_CheckActivation():
@@ -148,7 +148,7 @@ func grapplingHook_CheckActivation():
 func grapplingHook_UpdateVisualPoint():
 	if grappleHookCast.is_colliding():
 		grappleVisualPoint.visible = true
-		grappleVisualPoint.translation = grappleHookCast.get_collision_point()
+		grappleVisualPoint.position = grappleHookCast.get_collision_point()
 	else:
 		grappleVisualPoint.visible = false
 		
@@ -159,31 +159,31 @@ func grapplingHook_UpdateVisualLine(length : float):
 		grappleVisualLine.position.z = length / -1.80
 		
 func grapplingHook_UpdatePlayerVelocityAndReturnHookLength() -> float:
-	# var grapple_speed : float = 0.5
-	# var rest_length : float = 1
-	# var max_grapple_speed : float = 2.75
+	var grapple_speed : float = 0.5
+	var rest_length : float = 1
+	var max_grapple_speed : float = 2.75
 	
-	# var player2hook := grapplingHook_GrapplePosition - translation # vector from player to hook
-	# var length := player2hook.length()
-	# if(grapplingHook_IsHooked):
+	var player2hook := grapplingHook_GrapplePosition - position # vector from player to hook
+	var length := player2hook.length()
+	if(grapplingHook_IsHooked):
 		# if we more than 4 away from line, don't dampen speed as much
-		# if(length > 4):
-			# kinematicVelocity *= .999
+		if(length > 4):
+			velocity *= .999
 		# Otherwise dampen speed more
-		#else:
-		#	kinematicVelocity *= .9
+		else:
+			velocity *= .9
 		
 		# Hook's law equation
-		# var force := grapple_speed * (length - rest_length)
+		var force := grapple_speed * (length - rest_length)
 		
 		# Clamp force to be less than max_grapple_speed
-		# if abs(force) > max_grapple_speed:
-			# force = max_grapple_speed
+		if abs(force) > max_grapple_speed:
+			force = max_grapple_speed
 		
 		# Preserve direction, but scale by force
-		# kinematicVelocity += player2hook.normalized() * force
+		velocity += player2hook.normalized() * force
 	
-	return 0.0 #  length
+	return length
 	
 func grapplingHook_DisappearHand():
 	meshSkeletonHiddenHand.visible = false

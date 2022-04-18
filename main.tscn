@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bktxghmjd4nc"]
+[gd_scene load_steps=7 format=3 uid="uid://bktxghmjd4nc"]
 
 [ext_resource type="PackedScene" uid="uid://njxw8k8p0stp" path="res://game/maps/map_test/map_test.tscn" id="1_0op02"]
 [ext_resource type="PackedScene" uid="uid://ds36d5iqtsvuh" path="res://game/player/player_core_local.tscn" id="2_yvl7a"]
 [ext_resource type="Script" path="res://hypergodot/hyper_gossip/hyper_gossip.gd" id="3_g8xkj"]
+[ext_resource type="Script" path="res://hypergodot/hyper_godot_core.gd" id="3_hnq10"]
 [ext_resource type="Script" path="res://hypergodot/hyper_gateway/hyper_gateway.gd" id="4_djf6c"]
 [ext_resource type="PackedScene" uid="uid://wlhlq38cvryl" path="res://hypergodot/hyper_debugui/hyper_debugui.tscn" id="5_7ejif"]
 
@@ -18,6 +19,7 @@
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.22427, -3.67598, -8.14551)
 
 [node name="HyperGodot" type="Node" parent="."]
+script = ExtResource( "3_hnq10" )
 
 [node name="HyperGateway" type="Node" parent="HyperGodot"]
 script = ExtResource( "4_djf6c" )
@@ -26,3 +28,8 @@ script = ExtResource( "4_djf6c" )
 script = ExtResource( "3_g8xkj" )
 
 [node name="HyperDebugUI" parent="HyperGodot" instance=ExtResource( "5_7ejif" )]
+
+[connection signal="started_gateway" from="HyperGodot/HyperGateway" to="HyperGodot" method="_on_hyper_gateway_started_gateway"]
+[connection signal="stopped_gateway" from="HyperGodot/HyperGateway" to="HyperGodot" method="_on_hyper_gateway_stopped_gateway"]
+[connection signal="event" from="HyperGodot/HyperGossip" to="HyperGodot" method="_on_hyper_gossip_event"]
+[connection signal="listening" from="HyperGodot/HyperGossip" to="HyperGodot" method="_on_hyper_gossip_listening"]
