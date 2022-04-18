@@ -37,19 +37,19 @@ transform = Transform3D(-0.048187, 0, -0.998839, 0, 1, 0, 0.998839, 0, -0.048187
 [node name="PlayerSpawnNodes" type="Node3D" parent="."]
 
 [node name="Spawnpad_1" parent="PlayerSpawnNodes" instance=ExtResource( "3" )]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.673, 2.446, -3.56)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -8.02769, -3.93407, -17.5878)
 
 [node name="Spawnpad_2" parent="PlayerSpawnNodes" instance=ExtResource( "3" )]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.238, -3.872, -77.137)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -10.2974, 81.688, -231.732)
 
 [node name="Spawnpad_3" parent="PlayerSpawnNodes" instance=ExtResource( "3" )]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -13.621, -3.482, 9.865)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -256.946, 408.844, 9.865)
 
 [node name="Spawnpad_4" parent="PlayerSpawnNodes" instance=ExtResource( "3" )]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -14.3995, -3.87374, -17.1152)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -255.349, 117.806, -276.272)
 
 [node name="Spawnpad_5" parent="PlayerSpawnNodes" instance=ExtResource( "3" )]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -9.88113, 8.96284, -17.1152)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -502.652, 408.813, -532.601)
 
 [node name="Area" type="Area3D" parent="."]
 
