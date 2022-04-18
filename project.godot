@@ -54,6 +54,10 @@ config/features=PackedStringArray("4.0", "Vulkan Clustered")
 window/size/viewport_width=1440
 window/size/viewport_height=810
 
+[gui]
+
+theme/default_theme_scale=0.75
+
 [input]
 
 forward={

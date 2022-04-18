@@ -134,11 +134,14 @@ func _on_event(data, _event, id):
 
 	var parsed = jsonInstance.parse(data)
 	
-	if parsed.error != OK:
+	
+	# if parsed.error != OK:
+	if parsed != OK:
 		printerr("Unable to parse EventSource content " + parsed.error_line + "\n" + data)
 		return
 	
-	var result = parsed.result
+	# var result = parsed.result
+	var result = jsonInstance.get_data()
 	if !("from" in result):
 		result.from = id
 
