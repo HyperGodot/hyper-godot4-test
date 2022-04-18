@@ -17,9 +17,9 @@ const EVENT_PLAYER_SHOOT_GRAPPLINGHOOK = 'player_shoot_grapplinghook'
 const EVENT_PLAYER_RELEASE_GRAPPLINGHOOK = 'player_release_grapplinghook'
 const EVENT_PLAYER_TOGGLE_LIGHT = 'player_toggle_light'
 
-var PlayerCoreLocal = preload("res://game/player/player_core_local.tscn")
-var PlayerCoreRemote = preload("res://game/player/player_core_remote.tscn")
-var PlayerCoreLocalDebugUI = preload("res://game/player/player_core_local_debugui.tscn")
+@onready var PlayerCoreLocal = preload("res://game/player/player_core_local.tscn")
+@onready var PlayerCoreRemote = preload("res://game/player/player_core_remote.tscn")
+@onready var PlayerCoreLocalDebugUI = preload("res://game/player/player_core_local_debugui.tscn")
 
 func _ready():
 	hyperGateway = get_tree().get_current_scene().get_node("HyperGodot").get_node("HyperGateway")
