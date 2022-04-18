@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://o30hk1iwd64"]
+[gd_scene load_steps=7 format=3 uid="uid://o30hk1iwd64"]
 
+[ext_resource type="Script" path="res://game/maps/map_core.gd" id="1_7e0sh"]
 [ext_resource type="PackedScene" uid="uid://ymtm57x2epu0" path="res://assets/maps/map_cyber1/map_cyber1.scn" id="1_16m0b"]
 [ext_resource type="PackedScene" uid="uid://cxn43lx644yab" path="res://assets/maps/map_cyber1/map_cyber1_environment.tscn" id="1_fj65l"]
 [ext_resource type="PackedScene" uid="uid://cexotumax31qe" path="res://game/map_decorations/spawnpad.tscn" id="2_epjbj"]
@@ -8,7 +9,8 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_ildfq"]
 size = Vector3(500, 500, 500)
 
-[node name="Node3D" type="Node3D"]
+[node name="map_cyber1" type="Node3D"]
+script = ExtResource( "1_7e0sh" )
 
 [node name="PlayerSpawnNodes" type="Node3D" parent="."]
 

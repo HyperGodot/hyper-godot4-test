@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bktxghmjd4nc"]
+[gd_scene load_steps=9 format=3 uid="uid://bktxghmjd4nc"]
 
 [ext_resource type="PackedScene" uid="uid://njxw8k8p0stp" path="res://game/maps/map_test/map_test.tscn" id="1_0op02"]
 [ext_resource type="PackedScene" uid="uid://bnmqs28j8wtp1" path="res://game/maps/map_cyber/map_cyber.tscn" id="2_7tyrq"]
 [ext_resource type="PackedScene" uid="uid://ds36d5iqtsvuh" path="res://game/player/player_core_local.tscn" id="2_yvl7a"]
 [ext_resource type="Script" path="res://hypergodot/hyper_gossip/hyper_gossip.gd" id="3_g8xkj"]
 [ext_resource type="Script" path="res://hypergodot/hyper_godot_core.gd" id="3_hnq10"]
+[ext_resource type="PackedScene" uid="uid://o30hk1iwd64" path="res://game/maps/map_cyber1/map_cyber1.tscn" id="3_rgggb"]
 [ext_resource type="Script" path="res://hypergodot/hyper_gateway/hyper_gateway.gd" id="4_djf6c"]
 [ext_resource type="PackedScene" uid="uid://wlhlq38cvryl" path="res://hypergodot/hyper_debugui/hyper_debugui.tscn" id="5_7ejif"]
 
@@ -16,6 +17,8 @@
 
 [node name="map_cyber" parent="Maps" instance=ExtResource( "2_7tyrq" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 468.212, 0, -992.677)
+
+[node name="map_cyber1" parent="Maps" instance=ExtResource( "3_rgggb" )]
 
 [node name="Players" type="Node" parent="."]
 
