@@ -1,45 +1,45 @@
 [gd_resource type="AnimationNodeBlendTree" load_steps=37 format=3 uid="uid://4lcyy2yqlv2m"]
 
-[sub_resource type="AnimationNodeAnimation" id="51"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hs4bc"]
 animation = &"wall-run-r"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tnaj5"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tqr1x"]
 animation = &"wall-grab-r"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vyaeb"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o2bng"]
 animation = &"idle"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uru14"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lb2xi"]
 animation = &"landing"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wawqe"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3h6s0"]
 animation = &"walk-forward"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u20ff"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qr8c1"]
 animation = &"sprint"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2vmrc"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8aqij"]
 animation = &"jump"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_63xdf"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_j28qi"]
 animation = &"falling"
 
-[sub_resource type="AnimationNodeAnimation" id="47"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5v37v"]
 animation = &"wall-grab-r"
 
-[sub_resource type="AnimationNodeAnimation" id="48"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_00mbm"]
 animation = &"wall-run-r"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_paagg"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f35y4"]
 animation = &"dive-roll"
 
-[sub_resource type="AnimationNodeBlend2" id="53"]
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_s7dlh"]
 
-[sub_resource type="AnimationNodeBlend2" id="49"]
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_wu6wn"]
 
-[sub_resource type="AnimationNodeTimeScale" id="22"]
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_em73k"]
 
-[sub_resource type="AnimationNodeTransition" id="29"]
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_p1a7m"]
 input_count = 2
 xfade_time = 0.1
 input_0/name = "aiming"
@@ -47,9 +47,9 @@ input_0/auto_advance = false
 input_1/name = "not_aiming"
 input_1/auto_advance = false
 
-[sub_resource type="AnimationNodeBlend3" id="44"]
+[sub_resource type="AnimationNodeBlend3" id="AnimationNodeBlend3_3pej8"]
 
-[sub_resource type="AnimationNodeTransition" id="41"]
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_uogps"]
 input_count = 2
 xfade_time = 0.1
 input_0/name = "air"
@@ -57,71 +57,71 @@ input_0/auto_advance = false
 input_1/name = "ground"
 input_1/auto_advance = false
 
-[sub_resource type="AnimationNodeTimeScale" id="45"]
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_cvx2j"]
 
-[sub_resource type="AnimationNodeBlend3" id="28"]
+[sub_resource type="AnimationNodeBlend3" id="AnimationNodeBlend3_vhjwv"]
 
-[sub_resource type="AnimationNodeTimeScale" id="42"]
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_qbxul"]
 
-[sub_resource type="AnimationNodeTimeScale" id="46"]
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_oswof"]
 
-[sub_resource type="AnimationNodeOneShot" id="30"]
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_7pwdo"]
 
-[sub_resource type="AnimationNodeTimeScale" id="31"]
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_bi7is"]
 
-[sub_resource type="AnimationNodeTimeScale" id="33"]
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_pqd1w"]
 
-[sub_resource type="AnimationNodeAnimation" id="78"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l5165"]
 animation = &"idle"
 
-[sub_resource type="AnimationNodeAnimation" id="79"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lerby"]
 animation = &"walk-forward"
 
-[sub_resource type="AnimationNodeAnimation" id="80"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2lukn"]
 animation = &"strafe_right"
 
-[sub_resource type="AnimationNodeAnimation" id="81"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hlvbk"]
 animation = &"walk-diagonal-right"
 
-[sub_resource type="AnimationNodeAnimation" id="82"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8dkct"]
 animation = &"walk-diagonal-right-back"
 
-[sub_resource type="AnimationNodeAnimation" id="83"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jxhun"]
 animation = &"walk-backward"
 
-[sub_resource type="AnimationNodeAnimation" id="84"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8yfpx"]
 animation = &"walk-diagonal-left-back"
 
-[sub_resource type="AnimationNodeAnimation" id="85"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yu1sb"]
 animation = &"strafe-left"
 
-[sub_resource type="AnimationNodeAnimation" id="86"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6jmbi"]
 animation = &"walk-diagonal-left"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id="20"]
-blend_point_0/node = SubResource( "78" )
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_snna2"]
+blend_point_0/node = SubResource( "AnimationNodeAnimation_l5165" )
 blend_point_0/pos = Vector2(0, 0)
-blend_point_1/node = SubResource( "79" )
+blend_point_1/node = SubResource( "AnimationNodeAnimation_lerby" )
 blend_point_1/pos = Vector2(0, 1)
-blend_point_2/node = SubResource( "80" )
+blend_point_2/node = SubResource( "AnimationNodeAnimation_2lukn" )
 blend_point_2/pos = Vector2(1, 0)
-blend_point_3/node = SubResource( "81" )
+blend_point_3/node = SubResource( "AnimationNodeAnimation_hlvbk" )
 blend_point_3/pos = Vector2(1, 1.01)
-blend_point_4/node = SubResource( "82" )
+blend_point_4/node = SubResource( "AnimationNodeAnimation_8dkct" )
 blend_point_4/pos = Vector2(1, -1)
-blend_point_5/node = SubResource( "83" )
+blend_point_5/node = SubResource( "AnimationNodeAnimation_jxhun" )
 blend_point_5/pos = Vector2(0, -1)
-blend_point_6/node = SubResource( "84" )
+blend_point_6/node = SubResource( "AnimationNodeAnimation_8yfpx" )
 blend_point_6/pos = Vector2(-1, -1)
-blend_point_7/node = SubResource( "85" )
+blend_point_7/node = SubResource( "AnimationNodeAnimation_yu1sb" )
 blend_point_7/pos = Vector2(-1, 0)
-blend_point_8/node = SubResource( "86" )
+blend_point_8/node = SubResource( "AnimationNodeAnimation_6jmbi" )
 blend_point_8/pos = Vector2(-1, 1)
 max_space = Vector2(1.01, 1)
 
-[sub_resource type="AnimationNodeTimeScale" id="23"]
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_bvg56"]
 
-[sub_resource type="AnimationNodeTransition" id="50"]
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_ur2dc"]
 input_count = 3
 input_0/name = "wall_left"
 input_0/auto_advance = false
@@ -132,59 +132,59 @@ input_2/auto_advance = false
 
 [resource]
 graph_offset = Vector2(-1318.04, 44.3913)
-nodes/Animation/node = SubResource( "AnimationNodeAnimation_paagg" )
+nodes/Animation/node = SubResource( "AnimationNodeAnimation_f35y4" )
 nodes/Animation/position = Vector2(-280, 360)
-"nodes/Animation 10/node" = SubResource( "51" )
+"nodes/Animation 10/node" = SubResource( "AnimationNodeAnimation_hs4bc" )
 "nodes/Animation 10/position" = Vector2(160, -320)
-"nodes/Animation 12/node" = SubResource( "AnimationNodeAnimation_tnaj5" )
+"nodes/Animation 12/node" = SubResource( "AnimationNodeAnimation_tqr1x" )
 "nodes/Animation 12/position" = Vector2(180, -460)
-"nodes/Animation 2/node" = SubResource( "AnimationNodeAnimation_vyaeb" )
+"nodes/Animation 2/node" = SubResource( "AnimationNodeAnimation_o2bng" )
 "nodes/Animation 2/position" = Vector2(-720, 220)
-"nodes/Animation 3/node" = SubResource( "AnimationNodeAnimation_uru14" )
+"nodes/Animation 3/node" = SubResource( "AnimationNodeAnimation_lb2xi" )
 "nodes/Animation 3/position" = Vector2(-620, -80)
-"nodes/Animation 4/node" = SubResource( "AnimationNodeAnimation_wawqe" )
+"nodes/Animation 4/node" = SubResource( "AnimationNodeAnimation_3h6s0" )
 "nodes/Animation 4/position" = Vector2(-880, 380)
-"nodes/Animation 5/node" = SubResource( "AnimationNodeAnimation_u20ff" )
+"nodes/Animation 5/node" = SubResource( "AnimationNodeAnimation_qr8c1" )
 "nodes/Animation 5/position" = Vector2(-860, 540)
-"nodes/Animation 6/node" = SubResource( "AnimationNodeAnimation_2vmrc" )
+"nodes/Animation 6/node" = SubResource( "AnimationNodeAnimation_8aqij" )
 "nodes/Animation 6/position" = Vector2(-580, -340)
-"nodes/Animation 7/node" = SubResource( "AnimationNodeAnimation_63xdf" )
+"nodes/Animation 7/node" = SubResource( "AnimationNodeAnimation_j28qi" )
 "nodes/Animation 7/position" = Vector2(-580, -200)
-"nodes/Animation 8/node" = SubResource( "47" )
+"nodes/Animation 8/node" = SubResource( "AnimationNodeAnimation_5v37v" )
 "nodes/Animation 8/position" = Vector2(180, -180)
-"nodes/Animation 9/node" = SubResource( "48" )
+"nodes/Animation 9/node" = SubResource( "AnimationNodeAnimation_00mbm" )
 "nodes/Animation 9/position" = Vector2(180, -60)
-nodes/Blend2/node = SubResource( "49" )
+nodes/Blend2/node = SubResource( "AnimationNodeBlend2_wu6wn" )
 nodes/Blend2/position = Vector2(480, -120)
-"nodes/Blend2 2/node" = SubResource( "53" )
+"nodes/Blend2 2/node" = SubResource( "AnimationNodeBlend2_s7dlh" )
 "nodes/Blend2 2/position" = Vector2(480, -360)
-"nodes/TimeScale 3/node" = SubResource( "22" )
+"nodes/TimeScale 3/node" = SubResource( "AnimationNodeTimeScale_em73k" )
 "nodes/TimeScale 3/position" = Vector2(-480, 80)
-nodes/aim_transition/node = SubResource( "29" )
+nodes/aim_transition/node = SubResource( "AnimationNodeTransition_p1a7m" )
 nodes/aim_transition/position = Vector2(-240, 106.667)
-nodes/air_blend/node = SubResource( "44" )
+nodes/air_blend/node = SubResource( "AnimationNodeBlend3_3pej8" )
 nodes/air_blend/position = Vector2(-100, -160)
-nodes/air_transition/node = SubResource( "41" )
+nodes/air_transition/node = SubResource( "AnimationNodeTransition_uogps" )
 nodes/air_transition/position = Vector2(133.333, 53.3333)
-nodes/falling_scale/node = SubResource( "45" )
+nodes/falling_scale/node = SubResource( "AnimationNodeTimeScale_cvx2j" )
 nodes/falling_scale/position = Vector2(-360, -220)
-nodes/iwr_blend/node = SubResource( "28" )
+nodes/iwr_blend/node = SubResource( "AnimationNodeBlend3_vhjwv" )
 nodes/iwr_blend/position = Vector2(-400, 200)
-nodes/jump_scale/node = SubResource( "42" )
+nodes/jump_scale/node = SubResource( "AnimationNodeTimeScale_qbxul" )
 nodes/jump_scale/position = Vector2(-380, -360)
-nodes/landing_scale/node = SubResource( "46" )
+nodes/landing_scale/node = SubResource( "AnimationNodeTimeScale_oswof" )
 nodes/landing_scale/position = Vector2(-380, -80)
 nodes/output/position = Vector2(900, 100)
-nodes/roll/node = SubResource( "30" )
+nodes/roll/node = SubResource( "AnimationNodeOneShot_7pwdo" )
 nodes/roll/position = Vector2(373.333, 133.333)
-nodes/roll_scale/node = SubResource( "31" )
+nodes/roll_scale/node = SubResource( "AnimationNodeTimeScale_bi7is" )
 nodes/roll_scale/position = Vector2(-60, 280)
-nodes/run_scale/node = SubResource( "33" )
+nodes/run_scale/node = SubResource( "AnimationNodeTimeScale_pqd1w" )
 nodes/run_scale/position = Vector2(-640, 500)
-nodes/strafe/node = SubResource( "20" )
+nodes/strafe/node = SubResource( "AnimationNodeBlendSpace2D_snna2" )
 nodes/strafe/position = Vector2(-760, 60)
-nodes/walk_scale/node = SubResource( "23" )
+nodes/walk_scale/node = SubResource( "AnimationNodeTimeScale_bvg56" )
 nodes/walk_scale/position = Vector2(-640, 360)
-nodes/wall_run/node = SubResource( "50" )
+nodes/wall_run/node = SubResource( "AnimationNodeTransition_ur2dc" )
 nodes/wall_run/position = Vector2(720, -60)
-node_connections = [&"output", 0, &"wall_run", &"roll", 0, &"air_transition", &"roll", 1, &"roll_scale", &"Blend2", 0, &"Animation 8", &"Blend2", 1, &"Animation 9", &"Blend2 2", 0, &"Animation 12", &"Blend2 2", 1, &"Animation 10", &"TimeScale 3", 0, &"strafe", &"aim_transition", 0, &"TimeScale 3", &"aim_transition", 1, &"iwr_blend", &"air_blend", 0, &"jump_scale", &"air_blend", 1, &"falling_scale", &"air_blend", 2, &"landing_scale", &"air_transition", 0, &"air_blend", &"air_transition", 1, &"aim_transition", &"falling_scale", 0, &"Animation 7", &"iwr_blend", 0, &"Animation 2", &"iwr_blend", 1, &"walk_scale", &"iwr_blend", 2, &"run_scale", &"jump_scale", 0, &"Animation 6", &"landing_scale", 0, &"Animation 3", &"roll_scale", 0, &"Animation", &"run_scale", 0, &"Animation 5", &"walk_scale", 0, &"Animation 4", &"wall_run", 0, &"Blend2", &"wall_run", 1, &"Blend2 2", &"wall_run", 2, &"roll"]
+node_connections = [&"output", 0, &"wall_run", &"roll", 0, &"air_transition", &"roll", 1, &"roll_scale", &"air_transition", 0, &"air_blend", &"air_transition", 1, &"aim_transition", &"landing_scale", 0, &"Animation 3", &"walk_scale", 0, &"Animation 4", &"Blend2 2", 0, &"Animation 12", &"Blend2 2", 1, &"Animation 10", &"jump_scale", 0, &"Animation 6", &"Blend2", 0, &"Animation 8", &"Blend2", 1, &"Animation 9", &"run_scale", 0, &"Animation 5", &"TimeScale 3", 0, &"strafe", &"aim_transition", 0, &"TimeScale 3", &"aim_transition", 1, &"iwr_blend", &"iwr_blend", 0, &"Animation 2", &"iwr_blend", 1, &"walk_scale", &"iwr_blend", 2, &"run_scale", &"roll_scale", 0, &"Animation", &"air_blend", 0, &"jump_scale", &"air_blend", 1, &"falling_scale", &"air_blend", 2, &"landing_scale", &"falling_scale", 0, &"Animation 7", &"wall_run", 0, &"Blend2", &"wall_run", 1, &"Blend2 2", &"wall_run", 2, &"roll"]

@@ -190,11 +190,14 @@ func checkLatestVersion():
 	
 func _on_got_latest(_result, response_code, _headers, body):
 	print('Latest info response', response_code)
+	# json.parse now returns a generic Error, no longer JSONParseResult object.
 	var parsed = jsonInstance.parse(body.get_string_from_utf8())
-	if parsed.error != OK:
+	#if parsed.error != OK:
+	if parsed != OK:
 		printerr("Unable to parse latest version from GitHub:", parsed.error_string)
 		return
-	var info = parsed.result
+	# var info = parsed.result
+	var info = jsonInstance.get_data()
 	var newVersion = info.tag_name
 	
 	print('Latest version:', newVersion)
