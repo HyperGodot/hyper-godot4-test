@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://o30hk1iwd64"]
+
+[ext_resource type="PackedScene" uid="uid://ymtm57x2epu0" path="res://assets/maps/map_cyber1/map_cyber1.scn" id="1_16m0b"]
+[ext_resource type="PackedScene" uid="uid://cxn43lx644yab" path="res://assets/maps/map_cyber1/map_cyber1_environment.tscn" id="1_fj65l"]
+[ext_resource type="PackedScene" uid="uid://cexotumax31qe" path="res://game/map_decorations/spawnpad.tscn" id="2_epjbj"]
+[ext_resource type="PackedScene" uid="uid://csegj0tubaqd1" path="res://game/map_decorations/teleport.scn" id="3_o3mmd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ildfq"]
+size = Vector3(500, 500, 500)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="PlayerSpawnNodes" type="Node3D" parent="."]
+
+[node name="Spawnpad" parent="PlayerSpawnNodes" instance=ExtResource( "2_epjbj" )]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 36.2116, -3.26042, -0.00303733)
+
+[node name="Spawnpad2" parent="PlayerSpawnNodes" instance=ExtResource( "2_epjbj" )]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -16.7519, 0.202386, -0.00303733)
+
+[node name="PlayerTeleportNodes" type="Node3D" parent="."]
+
+[node name="Teleporter" parent="PlayerTeleportNodes" instance=ExtResource( "3_o3mmd" )]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 14.0748, -3.1379, -0.0399616)
+teleportation_destination = "map_cyber"
+
+[node name="Area" type="Area3D" parent="."]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Area"]
+shape = SubResource( "BoxShape3D_ildfq" )
+
+[node name="WorldEnvironment" parent="." instance=ExtResource( "1_fj65l" )]
+
+[node name="asset_map_cyber1" parent="." instance=ExtResource( "1_16m0b" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000886917, -9.53674e-07, -0.0444121)
+
+[editable path="WorldEnvironment"]
+[editable path="asset_map_cyber1"]
+[editable path="asset_map_cyber1/asset_map_cyber1"]
