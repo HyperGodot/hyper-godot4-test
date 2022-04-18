@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bktxghmjd4nc"]
+[gd_scene load_steps=8 format=3 uid="uid://bktxghmjd4nc"]
 
 [ext_resource type="PackedScene" uid="uid://njxw8k8p0stp" path="res://game/maps/map_test/map_test.tscn" id="1_0op02"]
+[ext_resource type="PackedScene" uid="uid://bnmqs28j8wtp1" path="res://game/maps/map_cyber/map_cyber.tscn" id="2_7tyrq"]
 [ext_resource type="PackedScene" uid="uid://ds36d5iqtsvuh" path="res://game/player/player_core_local.tscn" id="2_yvl7a"]
 [ext_resource type="Script" path="res://hypergodot/hyper_gossip/hyper_gossip.gd" id="3_g8xkj"]
 [ext_resource type="Script" path="res://hypergodot/hyper_godot_core.gd" id="3_hnq10"]
@@ -12,6 +13,8 @@
 [node name="Maps" type="Node3D" parent="."]
 
 [node name="map_test" parent="Maps" instance=ExtResource( "1_0op02" )]
+
+[node name="map_cyber" parent="Maps" instance=ExtResource( "2_7tyrq" )]
 
 [node name="Players" type="Node" parent="."]
 

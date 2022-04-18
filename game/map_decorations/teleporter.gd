@@ -23,11 +23,11 @@ func tryMapChange(mapChangeName : String, sendGossip : bool, playerNode):
 	var mapNode = null
 	if(mapCurrentName != teleportation_destination):
 		if(mapChangeName == "map_test"):
-			mapNode = mapsNode.find_node("map_test", true, false)
+			mapNode = mapsNode.get_node("map_test")
 		elif(mapChangeName == "map_cyber"):
-			mapNode = mapsNode.find_node("map_cyber", true, false)
+			mapNode = mapsNode.get_node("map_cyber")
 		elif(mapChangeName == "map_cyber1"):
-			mapNode = mapsNode.find_node("map_cyber1", true, false)
+			mapNode = mapsNode.get_node("map_cyber1")
 		# Find a Respawn Point
 		playerNode.currentSpawnLocation = playerNode.getSpawnLocationForMapName(mapChangeName)
 		playerNode.currentMap = mapNode
