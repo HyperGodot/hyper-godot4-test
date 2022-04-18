@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://cdhytj7hq0otb"]
+
+[ext_resource type="Texture2D" uid="uid://d4ejlwj2m2rct" path="res://assets/particles/FireMask.png" id="1_41t08"]
+
+[sub_resource type="Gradient" id="Gradient_uumr1"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_duqqp"]
+gradient = SubResource( "Gradient_uumr1" )
+
+[sub_resource type="Curve" id="Curve_jl5ig"]
+_data = [Vector2(0, 0), 0.0, 3.05455, 0, 0, Vector2(1, 1), 0.298004, 0.0, 0, 0]
+
+[sub_resource type="CurveTexture" id="CurveTexture_ejl88"]
+curve = SubResource( "Curve_jl5ig" )
+
+[sub_resource type="ParticlesMaterial" id="ParticlesMaterial_288xr"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 90, 1)
+emission_ring_height = 0.1
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.5
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+tangential_accel_max = 1.23
+scale_min = 0.1
+scale_max = 0.5
+scale_curve = SubResource( "CurveTexture_ejl88" )
+color = Color(0.501961, 0.501961, 0.501961, 1)
+color_ramp = SubResource( "GradientTexture1D_duqqp" )
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_yuhto"]
+transparency = 1
+blend_mode = 1
+no_depth_test = true
+albedo_texture = ExtResource( "1_41t08" )
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_i58mu"]
+material = SubResource( "ORMMaterial3D_yuhto" )
+
+[node name="Node3D" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 200
+explosiveness = 1.0
+process_material = SubResource( "ParticlesMaterial_288xr" )
+draw_pass_1 = SubResource( "QuadMesh_i58mu" )
