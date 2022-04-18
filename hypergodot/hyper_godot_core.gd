@@ -18,7 +18,7 @@ const EVENT_PLAYER_RELEASE_GRAPPLINGHOOK = 'player_release_grapplinghook'
 const EVENT_PLAYER_TOGGLE_LIGHT = 'player_toggle_light'
 
 @onready var PlayerCoreLocal = preload("res://game/player/player_core_local.tscn")
-@onready var PlayerCoreRemote = preload("res://game/player/player_core_remote.tscn")
+var PlayerCoreRemote = preload("res://game/player/player_core_remote.tscn")
 @onready var PlayerCoreLocalDebugUI = preload("res://game/player/player_core_local_debugui.tscn")
 
 func _ready():
@@ -88,7 +88,7 @@ func get_player_object(id):
 	if knownPlayers.has(id):
 		return knownPlayers[id]
 
-	var remotePlayer = PlayerCoreRemote.instance()
+	var remotePlayer = PlayerCoreRemote.instantiate()
 	knownPlayers[id] = remotePlayer
 	
 	hyperDebugUI.addGossipIDToList(id)
