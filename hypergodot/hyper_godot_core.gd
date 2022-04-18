@@ -100,12 +100,12 @@ func get_player_object(id):
 func updatePlayer_shootGrapplingHook(data, id):
 	var remotePlayer = get_player_object(id)
 	
-	var translation : Vector3 = Vector3(data.translation.x, data.translation.y, data.translation.z)
+	var position : Vector3 = Vector3(data.position.x, data.position.y, data.position.z)
 	var direction : Vector3 = Vector3(data.direction.x, data.direction.y, data.direction.z)
 	var velocity : Vector3 = Vector3(data.velocity.x, data.velocity.y, data.velocity.z)
 	var grapple_position : Vector3 = Vector3(data.grapple_position.x, data.grapple_position.y, data.grapple_position.z)
 	
-	remotePlayer.playerCoreNetworkDataUpdate_Types(translation, direction, velocity)
+	remotePlayer.playerCoreNetworkDataUpdate_Types(position, direction, velocity)
 	remotePlayer.grapplingHook_GrapplePosition = grapple_position
 	remotePlayer.playerWantsToShootGrapplingHook = true
 	
@@ -118,12 +118,12 @@ func updatePlayer_releaseGrapplingHook(data, id):
 func updatePlayerWithSnapshot(data, id):
 	var remotePlayer = get_player_object(id)
 
-	var translation : Vector3 = Vector3(data.translation.x, data.translation.y, data.translation.z)
+	var position : Vector3 = Vector3(data.position.x, data.position.y, data.position.z)
 	var meshDirection : Vector3 = Vector3(data.meshDirection.x, data.meshDirection.y, data.meshDirection.z)
 	var lookingDirection : Vector3 = Vector3(data.lookingDirection.x, data.lookingDirection.y, data.lookingDirection.z)
 	
 	remotePlayer.snapShotUpdate(
-		translation,
+		position,
 		meshDirection,
 		lookingDirection
 	)
