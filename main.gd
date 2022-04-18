@@ -1,7 +1,7 @@
 extends Node
 
-@onready var map_test_environment = preload("res://assets/maps/map_test/map_test_environment.scn")
-# @onready var map_cyber_environment = preload("res://assets/maps/map_cyber/map_cyber_environment.scn")
+@onready var map_test_environment = preload("res://game/maps/map_test/map_test.tscn")
+@onready var map_cyber_environment = preload("res://game/maps/map_cyber/map_cyber.tscn")
 # @onready var map_cyber1_environment = preload("res://assets/maps/map_cyber1/map_cyber1_environment.scn")
 
 func _ready():

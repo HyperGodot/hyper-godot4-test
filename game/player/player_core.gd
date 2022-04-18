@@ -108,7 +108,7 @@ func getSpawnLocationForMapName(mapName : String) -> Vector3:
 	# Get Map Node
 	var mapNodes = get_tree().get_current_scene().get_node("Maps").find_nodes(mapName, "", true, false)
 	if(mapNodes == null or mapNodes.size() == 0):
-		return get_tree().get_current_scene().get_node("Maps").find_nodes("map_test", "", true, false)[0].getSpawnLocation()
+		return get_tree().get_current_scene().get_node("Maps").get_node("map_test").getSpawnLocation()
 	else:
 		return mapNodes[0].getSpawnLocation()
 
