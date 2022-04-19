@@ -210,7 +210,7 @@ func _physics_process(_delta):
 	# Check for New World Environment
 	if(playerWantsNewWorldEnvironment):
 		playerWantsNewWorldEnvironment = false
-		# currentMap.updateMapWorldEnvironmentScene()
+		currentMap.updateMapWorldEnvironmentScene()
 		
 	# Check for Toggle Light
 	if(playerWantsToToggleLight):
