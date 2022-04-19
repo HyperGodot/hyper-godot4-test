@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bipaa31egh2as"]
+
+[ext_resource type="Shader" uid="uid://catcbel48uye0" path="res://assets/shaders/test.res" id="1_hte4u"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0q1ki"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wxa6t"]
+render_priority = 0
+shader = ExtResource( "1_hte4u" )
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource( "PlaneMesh_0q1ki" )
+surface_material_override/0 = SubResource( "ShaderMaterial_wxa6t" )

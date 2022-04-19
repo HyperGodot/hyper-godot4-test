@@ -3,25 +3,27 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bnuyfp5ju72wd"
-path="res://.godot/imported/WispyNoise.png-48a0fd4bd5fc8ff1f1b280d16213ca41.ctex"
+path.s3tc="res://.godot/imported/WispyNoise.png-48a0fd4bd5fc8ff1f1b280d16213ca41.s3tc.ctex"
+path.etc2="res://.godot/imported/WispyNoise.png-48a0fd4bd5fc8ff1f1b280d16213ca41.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc", "etc2"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/particles/WispyNoise.png"
-dest_files=["res://.godot/imported/WispyNoise.png-48a0fd4bd5fc8ff1f1b280d16213ca41.ctex"]
+dest_files=["res://.godot/imported/WispyNoise.png-48a0fd4bd5fc8ff1f1b280d16213ca41.s3tc.ctex", "res://.godot/imported/WispyNoise.png-48a0fd4bd5fc8ff1f1b280d16213ca41.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -30,4 +32,4 @@ process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0
