@@ -27,6 +27,12 @@ func getSpawnLocation(bodyNode, mapNode) -> Vector3:
 	return spawnNode.global_transform.origin
 	
 func PurgeAllWorldEnvironmentNodes():
-	var worldEnvironments = find_nodes("WorldEnvironment", "", true, false)
-	for i in range(0, worldEnvironments.size() ):
-		worldEnvironments[i].free()
+	var worldEnvironment = get_tree().get_current_scene().get_node("Maps").get_node("map_test").get_node("WorldEnvironment")
+	if(worldEnvironment != null):
+		worldEnvironment.free()
+	worldEnvironment = get_tree().get_current_scene().get_node("Maps").get_node("map_cyber").get_node("WorldEnvironment")
+	if(worldEnvironment != null):
+		worldEnvironment.free()
+	worldEnvironment = get_tree().get_current_scene().get_node("Maps").get_node("map_cyber1").get_node("WorldEnvironment")
+	if(worldEnvironment != null):
+		worldEnvironment.free()

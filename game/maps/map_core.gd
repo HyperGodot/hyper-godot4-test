@@ -17,9 +17,11 @@ func getSpawnLocation() -> Vector3:
 	return spawnNode.global_transform.origin
 	
 func getInstanceOfMapWorldEnvironmentScene():
-	var path = "res://assets/maps/" + map_name + "/" + map_name + "_environment.scn"
-	var worldEnvironment = load(path)
-	return worldEnvironment
+	var new_environment_node = WorldEnvironment.new()
+	var path = "res://assets/maps/" + map_name + "/" + map_name + "_environment.res"
+	new_environment_node.environment = load(path)
+	
+	return new_environment_node
 	
 func updateMapWorldEnvironmentScene():
 	# First check to see if we need to delete any existing World Environments
@@ -28,7 +30,7 @@ func updateMapWorldEnvironmentScene():
 	# Spawn in new World Environment
 	var worldEnvironment = getInstanceOfMapWorldEnvironmentScene()
 	if(worldEnvironment != null):
-		add_child(worldEnvironment.instance())
+		add_child(worldEnvironment)
 
 func addGrapplingHookCollisionMaskToMap():
 	var _name = self.name
@@ -51,7 +53,7 @@ func checkAndSetChildrenGrapplingHookMask(_Node, indentLevel : int):
 
 func _on_Area_body_entered(body, _map_name):
 	if(body is CharacterBody3D):
-		var mapNodes = get_tree().get_current_scene().get_node("Maps").find_nodes(_map_name, "", true, false)
+		var mapNodes = get_tree().get_current_scene().get_node("Maps").find_children(_map_name, "", true, false)
 		for i in range(0, mapNodes.size()):
 			if mapNodes[i].name == _map_name:
 				body.currentMap = mapNodes[i]
