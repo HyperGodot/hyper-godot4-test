@@ -17,11 +17,13 @@ func getSpawnLocation() -> Vector3:
 	return spawnNode.global_transform.origin
 	
 func getInstanceOfMapWorldEnvironmentScene():
-	var new_environment_node = WorldEnvironment.new()
-	var path = "res://assets/maps/" + map_name + "/" + map_name + "_environment.res"
-	new_environment_node.environment = load(path)
+	# var new_environment_node = WorldEnvironment.new()
+	var path = "res://assets/maps/" + map_name + "/" + map_name + "_environment.scn"
+	var newNode = load(path).instantiate()
+	# new_environment_node.environment = load(path)
+	# new_environment_node.name = "WorldEnvironment"
 	
-	return new_environment_node
+	return newNode
 	
 func updateMapWorldEnvironmentScene():
 	# First check to see if we need to delete any existing World Environments

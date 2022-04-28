@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://th4ivyj7adfg"]
+[gd_scene load_steps=38 format=3 uid="uid://th4ivyj7adfg"]
 
 [ext_resource type="PackedScene" uid="uid://cpk1cfupvkvxd" path="res://assets/models/tumble/model_tumble.tscn" id="1"]
 [ext_resource type="AnimationNodeBlendTree" uid="uid://4lcyy2yqlv2m" path="res://game/player/player_animation_tree.tres" id="14_4b160"]
@@ -39,6 +39,31 @@
 [sub_resource type="CylinderShape3D" id="1"]
 height = 1.58
 radius = 0.3
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3jl3u"]
+_data = {
+"default": ExtResource( "15_khbab" ),
+"dive-roll": ExtResource( "16_8624j" ),
+"falling": ExtResource( "17_8nvgv" ),
+"idle": ExtResource( "18_ti6sk" ),
+"jump": ExtResource( "18_cd8xy" ),
+"landing": ExtResource( "19_s06o7" ),
+"run": ExtResource( "20_c1ief" ),
+"sprint": ExtResource( "21_logsa" ),
+"strafe-left": ExtResource( "22_vb2y3" ),
+"strafe_right": ExtResource( "23_njdo4" ),
+"walk-backward": ExtResource( "24_yc4q7" ),
+"walk-diagonal-left": ExtResource( "25_y8rok" ),
+"walk-diagonal-left-back": ExtResource( "26_q8krr" ),
+"walk-diagonal-right": ExtResource( "27_arv07" ),
+"walk-diagonal-right-back": ExtResource( "28_soxwl" ),
+"walk-forward": ExtResource( "29_hyowf" ),
+"wall-grab-f": ExtResource( "30_8o6lq" ),
+"wall-grab-l": ExtResource( "31_tqbd2" ),
+"wall-grab-r": ExtResource( "32_1j1wk" ),
+"wall-run-l": ExtResource( "33_35j74" ),
+"wall-run-r": ExtResource( "34_rq5gl" )
+}
 
 [node name="PlayerCore" type="CharacterBody3D"]
 script = ExtResource( "24" )
@@ -113,7 +138,7 @@ transform = Transform3D(-0.454202, 0.376862, -0.807264, 0.862653, -0.0403142, -0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.769087, 0)
 visible = false
 light_energy = 5.194
-omni_range = 2.23
+omni_range = 50.9
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = ExtResource( "14_4b160" )
@@ -138,26 +163,8 @@ parameters/wall_run/current = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Model")
-anims/default = ExtResource( "15_khbab" )
-anims/dive-roll = ExtResource( "16_8624j" )
-anims/falling = ExtResource( "17_8nvgv" )
-anims/idle = ExtResource( "18_ti6sk" )
-anims/jump = ExtResource( "18_cd8xy" )
-anims/landing = ExtResource( "19_s06o7" )
-anims/run = ExtResource( "20_c1ief" )
-anims/sprint = ExtResource( "21_logsa" )
-anims/strafe-left = ExtResource( "22_vb2y3" )
-anims/strafe_right = ExtResource( "23_njdo4" )
-anims/walk-backward = ExtResource( "24_yc4q7" )
-anims/walk-diagonal-left = ExtResource( "25_y8rok" )
-anims/walk-diagonal-left-back = ExtResource( "26_q8krr" )
-anims/walk-diagonal-right = ExtResource( "27_arv07" )
-anims/walk-diagonal-right-back = ExtResource( "28_soxwl" )
-anims/walk-forward = ExtResource( "29_hyowf" )
-anims/wall-grab-f = ExtResource( "30_8o6lq" )
-anims/wall-grab-l = ExtResource( "31_tqbd2" )
-anims/wall-grab-r = ExtResource( "32_1j1wk" )
-anims/wall-run-l = ExtResource( "33_35j74" )
-anims/wall-run-r = ExtResource( "34_rq5gl" )
+libraries = {
+"": SubResource( "AnimationLibrary_3jl3u" )
+}
 
 [connection signal="timeout" from="MoveNetworkTimer" to="." method="_on_MoveNetworkTimer_timeout"]

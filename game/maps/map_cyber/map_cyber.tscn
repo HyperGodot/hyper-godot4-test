@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bnmqs28j8wtp1"]
 
-[ext_resource type="PackedScene" uid="uid://denmfe20xh0b4" path="res://assets/maps/map_cyber/level0.scn" id="2"]
+[ext_resource type="PackedScene" path="res://assets/maps/map_cyber/level0.scn" id="2"]
 [ext_resource type="PackedScene" uid="uid://cexotumax31qe" path="res://game/map_decorations/spawnpad.tscn" id="3"]
 [ext_resource type="Script" path="res://game/maps/map_core.gd" id="4"]
 [ext_resource type="PackedScene" uid="uid://csegj0tubaqd1" path="res://game/map_decorations/teleport.scn" id="5"]
