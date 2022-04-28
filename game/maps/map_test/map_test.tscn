@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://7mme5t5cy2f3" path="res://assets/sounds/ambience/howling_wind.mp3" id="6"]
 
 [sub_resource type="BoxShape3D" id="35"]
-size = Vector3(800, 800, 800)
+size = Vector3(500, 500, 500)
 
 [node name="map_test" type="Node3D"]
 script = ExtResource( "2" )
@@ -37,22 +37,9 @@ transform = Transform3D(-0.048187, 0, -0.998839, 0, 1, 0, 0.998839, 0, -0.048187
 [node name="Spawnpad_1" parent="PlayerSpawnNodes" instance=ExtResource( "3" )]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -8.02769, -3.93407, -17.5878)
 
-[node name="Spawnpad_2" parent="PlayerSpawnNodes" instance=ExtResource( "3" )]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -10.2974, 81.688, -231.732)
-
-[node name="Spawnpad_3" parent="PlayerSpawnNodes" instance=ExtResource( "3" )]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -256.946, 408.844, 9.865)
-
-[node name="Spawnpad_4" parent="PlayerSpawnNodes" instance=ExtResource( "3" )]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -255.349, 117.806, -276.272)
-
-[node name="Spawnpad_5" parent="PlayerSpawnNodes" instance=ExtResource( "3" )]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -502.652, 408.813, -532.601)
-
 [node name="Area" type="Area3D" parent="."]
 
 [node name="CollisionShape" type="CollisionShape3D" parent="Area"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -253.438, 194.727, -272.738)
 shape = SubResource( "35" )
 
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered" binds= ["map_test"]]
