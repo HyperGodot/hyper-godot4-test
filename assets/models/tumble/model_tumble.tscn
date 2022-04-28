@@ -1,6 +1,52 @@
-[gd_scene load_steps=2 format=3 uid="uid://cpk1cfupvkvxd"]
+[gd_scene load_steps=24 format=3 uid="uid://cpk1cfupvkvxd"]
 
 [ext_resource type="PackedScene" uid="uid://l6vfvdaxveow" path="res://assets/models/tumble/tumble.glb" id="1"]
+[ext_resource type="Animation" uid="uid://bhxwd0hc1xwol" path="res://assets/models/tumble/animation/default.res" id="2_fftwx"]
+[ext_resource type="Animation" uid="uid://b641gdt8rlxs0" path="res://assets/models/tumble/animation/idle.res" id="3_lsrbb"]
+[ext_resource type="Animation" uid="uid://3m8jnrrjmb8n" path="res://assets/models/tumble/animation/dive-roll.res" id="4_dyugg"]
+[ext_resource type="Animation" uid="uid://cllf5vh5wfe4m" path="res://assets/models/tumble/animation/jump.res" id="5_ip3n0"]
+[ext_resource type="Animation" uid="uid://diu138rt4wbo4" path="res://assets/models/tumble/animation/wall-grab-f.res" id="6_6isr8"]
+[ext_resource type="Animation" uid="uid://rejlngohxkgr" path="res://assets/models/tumble/animation/wall-grab-l.res" id="7_cwl1d"]
+[ext_resource type="Animation" uid="uid://cjiv1m5iedtef" path="res://assets/models/tumble/animation/wall-grab-r.res" id="8_7jxsl"]
+[ext_resource type="Animation" uid="uid://cetrd58cpnn2x" path="res://assets/models/tumble/animation/walk-diagonal-left.res" id="9_db0e2"]
+[ext_resource type="Animation" uid="uid://dg0td345nrdbe" path="res://assets/models/tumble/animation/run.res" id="10_aoqp7"]
+[ext_resource type="Animation" uid="uid://bkvaodakwug3e" path="res://assets/models/tumble/animation/wall-run-l.res" id="11_5rtrc"]
+[ext_resource type="Animation" uid="uid://4ixqttqa6txu" path="res://assets/models/tumble/animation/wall-run-r.res" id="12_6ldo3"]
+[ext_resource type="Animation" uid="uid://h4f7tog32k57" path="res://assets/models/tumble/animation/walk-backward.res" id="13_s7y2n"]
+[ext_resource type="Animation" uid="uid://b046urodah0a1" path="res://assets/models/tumble/animation/strafe-left.res" id="14_aqw44"]
+[ext_resource type="Animation" uid="uid://brqor25qijknl" path="res://assets/models/tumble/animation/walk-diagonal-right.res" id="15_nkjes"]
+[ext_resource type="Animation" uid="uid://csbbfdgwqo8tq" path="res://assets/models/tumble/animation/falling.res" id="16_2dbet"]
+[ext_resource type="Animation" uid="uid://crlfbbyt7jnwd" path="res://assets/models/tumble/animation/walk-diagonal-left-back.res" id="17_tjos4"]
+[ext_resource type="Animation" uid="uid://b0vglu3hw56jb" path="res://assets/models/tumble/animation/strafe_right.res" id="18_mhyek"]
+[ext_resource type="Animation" uid="uid://cy81owqw5jwgd" path="res://assets/models/tumble/animation/walk-diagonal-right-back.res" id="19_pwmja"]
+[ext_resource type="Animation" uid="uid://beqlu220rgebq" path="res://assets/models/tumble/animation/sprint.res" id="20_0avmt"]
+[ext_resource type="Animation" uid="uid://bbo2efp3p5j45" path="res://assets/models/tumble/animation/landing.res" id="21_e5j8k"]
+[ext_resource type="Animation" uid="uid://cevud8wm6itgs" path="res://assets/models/tumble/animation/walk-forward.res" id="22_lq2ie"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yowx3"]
+_data = {
+"default": ExtResource( "2_fftwx" ),
+"dive-roll": ExtResource( "4_dyugg" ),
+"falling": ExtResource( "16_2dbet" ),
+"idle": ExtResource( "3_lsrbb" ),
+"jump": ExtResource( "5_ip3n0" ),
+"landing": ExtResource( "21_e5j8k" ),
+"run": ExtResource( "10_aoqp7" ),
+"sprint": ExtResource( "20_0avmt" ),
+"strafe-left": ExtResource( "14_aqw44" ),
+"strafe-right": ExtResource( "18_mhyek" ),
+"walk-backward": ExtResource( "13_s7y2n" ),
+"walk-diagonal-left": ExtResource( "9_db0e2" ),
+"walk-diagonal-left-back": ExtResource( "17_tjos4" ),
+"walk-diagonal-right": ExtResource( "15_nkjes" ),
+"walk-diagonal-right-back": ExtResource( "19_pwmja" ),
+"walk-forward": ExtResource( "22_lq2ie" ),
+"wall_grab_f": ExtResource( "6_6isr8" ),
+"wall_grab_l": ExtResource( "7_cwl1d" ),
+"wall_grab_r": ExtResource( "8_7jxsl" ),
+"wall_run_l": ExtResource( "11_5rtrc" ),
+"wall_run_r": ExtResource( "12_6ldo3" )
+}
 
 [node name="tumble" instance=ExtResource( "1" )]
 transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 0, 0, 0)
@@ -9,3 +55,8 @@ transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 0, 0, 0)
 process_priority = 1
 root_bone = &"DEF-upper_arm.R"
 tip_bone = &"DEF-hand.R"
+
+[node name="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource( "AnimationLibrary_yowx3" )
+}

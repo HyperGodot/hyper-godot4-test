@@ -49,6 +49,10 @@ run/main_scene="res://main.tscn"
 config/icon="res://icon.png"
 config/features=PackedStringArray("4.0", "Vulkan Clustered")
 
+[autoload]
+
+Settings="*res://game/settings.gd"
+
 [display]
 
 window/size/viewport_width=1440

@@ -2,11 +2,11 @@ extends Control
 
 signal gossip_update_rate_changed(seconds)
 
-@onready var lGossipUpdateRate : Label = $HypercoreDebugPanel/HypercoreDebugContainer/GossipUpdateRate
-@onready var gatewayStartStopButton : Button = $HypercoreDebugPanel/HypercoreDebugContainer/GatewayStartStopButton
-@onready var gatewayStatus : Label = $HypercoreDebugPanel/HypercoreDebugContainer/GatewayStatus_Value
-@onready var gossipURL : Label = $HypercoreDebugPanel/HypercoreDebugContainer/GossipURL_Value
-@onready var gossipIDList : ItemList = $HypercoreDebugPanel/HypercoreDebugContainer/GossipIDList_Value
+@onready var lGossipUpdateRate : Label = $HypercoreDebugContainer/GossipUpdateRate
+@onready var gatewayStartStopButton : Button = $HypercoreDebugContainer/GatewayStartStopButton
+@onready var gatewayStatus : Label = $HypercoreDebugContainer/GatewayStatus_Value
+@onready var gossipURL : Label = $HypercoreDebugContainer/GossipURL_Value
+@onready var gossipIDList : ItemList = $HypercoreDebugContainer/GossipIDList_Value
 
 var hyperGateway : HyperGateway
 var hyperGossip : HyperGossip
