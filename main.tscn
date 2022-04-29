@@ -44,6 +44,7 @@ script = ExtResource( "4_djf6c" )
 script = ExtResource( "3_g8xkj" )
 
 [node name="HyperDebugUI" parent="HyperGodot" instance=ExtResource( "5_7ejif" )]
+visible = false
 
 [connection signal="started_gateway" from="HyperGodot/HyperGateway" to="HyperGodot" method="_on_hyper_gateway_started_gateway"]
 [connection signal="stopped_gateway" from="HyperGodot/HyperGateway" to="HyperGodot" method="_on_hyper_gateway_stopped_gateway"]

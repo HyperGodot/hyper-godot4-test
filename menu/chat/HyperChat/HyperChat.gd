@@ -51,9 +51,9 @@ func send_current():
 	display_item(get_username(), text)
 	broadcast_text(text)
 
-func update_identity(_from, username):
+func update_identity(_from, _username):
 	# Have some sort of sidebar to display known users?	
-	display_item('System', 'Seen user ' + username)
+	display_item('System', 'Seen user ' + _username)
 	pass
 	
 func list_peers():
@@ -81,18 +81,18 @@ func get_username():
 	return username.text
 
 func broadcast_text(content):
-	var username = get_username()
+	var _username = get_username()
 	broadcast_message({
 		'type': 'text',
 		'content': content,
-		'username': username
+		'username': _username
 	})
 
 func broadcast_identity():
-	var username = get_username()
+	var _username = get_username()
 	broadcast_message({
 		'type': 'identity',
-		'username': username
+		'username': _username
 	})
 
 func broadcast_message(message):
@@ -146,11 +146,6 @@ func make_id():
 func start_listening():
 	eventSource.request(extensionsFolder)	
 
-func _on_HyperGateway_started_gateway(_pid):
-	start_listening()
-	list_peers()
-	broadcast_identity()
-
 func _on_ChatInput_text_entered(_new_text):
 	send_current()
 	pass # Replace with function body.
@@ -160,3 +155,8 @@ func _on_send_button_pressed():
 
 func _on_hyper_event_source_event(data, event, id):
 	_on_event(data, event, id)
+
+func _on_hyper_gateway_started_gateway(pid):
+	start_listening()
+	list_peers()
+	broadcast_identity()
