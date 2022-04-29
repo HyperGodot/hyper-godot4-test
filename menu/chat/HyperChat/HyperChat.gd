@@ -132,12 +132,13 @@ func handle_message(message, from):
 			_on_unknown_message(message, finalFrom)
 
 func _on_event(data, _event, id):
-	var error = jsonInstance.parse(data)
+	var jsonLocal = JSON.new()
+	var error = jsonLocal.parse(data)
 	var parsed = null
 	if error != OK:
-		printerr("Unable to parse EventSource content " + jsonInstance.get_error_line() + "\n" + data)
+		printerr("Unable to parse EventSource content " + jsonLocal.get_error_line() + "\n" + data)
 	else:
-		parsed = jsonInstance.get_data()
+		parsed = jsonLocal.get_data()
 		handle_message(parsed.result, id)
 
 func make_id():
