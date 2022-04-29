@@ -1,6 +1,5 @@
-extends "res://src/ResizeRoot.gd"
-
-const LRU = preload('res://src/utils/LRU.gd')
+extends Control
+# extends "res://src/ResizeRoot.gd"
 
 # Messages are JSON which contain {id, from, username, type, content}
 # All messages have a username and type
@@ -15,9 +14,13 @@ const LRU = preload('res://src/utils/LRU.gd')
 # Broadcast self on name change
 # Broadcast self when seeing a new remotePublicKey
 
-export var archiveRoot = 'hyper://blog.mauve.moe/'
+@export var archiveRoot = 'hyper://blog.mauve.moe/'
 #export var archiveRoot = 'hyper://70338a94d7415990ab4a3160cf98a5d940243d7fa24dd297352e66b52d3ff841/'
-export var extensionName = 'hyperchat-example-1'
+@export var extensionName = 'hyperchat-example-1'
+
+const LRU = preload('res://hypergodot/utils/lru.gd')
+
+@onready var jsonInstance = JSON.new()
 
 var extensionsFolder = archiveRoot + '$/extensions/'
 var extensionPath = extensionsFolder + extensionName
@@ -25,13 +28,13 @@ var extensionPath = extensionsFolder + extensionName
 var seen_messages = LRU.new()
 var seen_identities = LRU.new()
 
-onready var eventSource = $HyperGateway/HyperEventSource
-onready var gateway = $HyperGateway
-onready var chatBox = $ScrollContainer/ChatBox
-onready var chatText = $HBoxContainer/ChatInput
-onready var username = $HBoxContainer/Username
-onready var broadcastRequest = $HyperGateway/BroadcastRequest
-onready var listPeersRequest = $HyperGateway/ListPeersRequest
+@onready var eventSource = $HyperGateway/HyperEventSource
+@onready var gateway = $HyperGateway
+@onready var chatBox = $ScrollContainer/ChatBox
+@onready var chatText = $HBoxContainer/ChatInput
+@onready var username = $HBoxContainer/Username
+@onready var broadcastRequest = $HyperGateway/BroadcastRequest
+@onready var listPeersRequest = $HyperGateway/ListPeersRequest
 
 func _ready():
 	# Initialize random number generator
@@ -98,7 +101,7 @@ func broadcast_message(message):
 		message.id = make_id()
 	seen_messages.track(message.id)
 	print('Broadcasting message', message, extensionPath)
-	var body = JSON.print(message)
+	var body = jsonInstance.stringify(message)
 	broadcastRequest.request(extensionPath,[], false, HTTPClient.METHOD_POST, body)
 
 func has_seen_identity(from):
@@ -129,13 +132,13 @@ func handle_message(message, from):
 			_on_unknown_message(message, finalFrom)
 
 func _on_event(data, _event, id):
-	var parsed = JSON.parse(data)
-	
-	if parsed.error != OK:
-		printerr("Unable to parse EventSource content " + parsed.error_line + "\n" + data)
-		return
-	
-	handle_message(parsed.result, id)
+	var error = jsonInstance.parse(data)
+	var parsed = null
+	if error != OK:
+		printerr("Unable to parse EventSource content " + jsonInstance.get_error_line() + "\n" + data)
+	else:
+		parsed = jsonInstance.get_data()
+		handle_message(parsed.result, id)
 
 func make_id():
 	return str(randi()) + str(randi())
@@ -143,18 +146,17 @@ func make_id():
 func start_listening():
 	eventSource.request(extensionsFolder)	
 
-func _on_HyperEventSource_event(data, event, id):
-	_on_event(data, event, id)
-
 func _on_HyperGateway_started_gateway(_pid):
 	start_listening()
 	list_peers()
 	broadcast_identity()
 
-func _on_SendButton_pressed():
-	send_current()
-	pass # Replace with function body.
-
 func _on_ChatInput_text_entered(_new_text):
 	send_current()
 	pass # Replace with function body.
+
+func _on_send_button_pressed():
+	send_current()
+
+func _on_hyper_event_source_event(data, event, id):
+	_on_event(data, event, id)

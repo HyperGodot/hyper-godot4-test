@@ -25,7 +25,7 @@ func _ready():
 	hyperGateway = get_tree().get_current_scene().get_node("HyperGodot").get_node("HyperGateway")
 	hyperGossip = get_tree().get_current_scene().get_node("HyperGodot").get_node("HyperGossip")
 	hyperDebugUI = get_tree().get_current_scene().get_node("HyperGodot").get_node("HyperDebugUI")
-	localSnapshotTimer = get_tree().get_current_scene().get_node("HyperGodot").get_node("LocalSnapshotTimer")
+	# localSnapshotTimer = get_tree().get_current_scene().get_node("HyperGodot").get_node("LocalSnapshotTimer")
 
 func _process(_delta):
 	pass

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://c07q1el2aovpr"]
 
 [ext_resource type="Script" path="res://menu/chat/HyperChat/HyperChat.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://cue2rke35i36o" path="res://hypergodot/hyper_gateway/hyper_gateway.tscn" id="2"]
@@ -8,61 +8,54 @@
 [node name="Control" type="VBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource( "1" )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_right = 666.0
-margin_bottom = 24.0
+offset_right = 1440.0
+offset_bottom = 23.0
 
 [node name="ChatInput" type="LineEdit" parent="HBoxContainer"]
-margin_right = 487.0
-margin_bottom = 24.0
+offset_right = 1349.0
+offset_bottom = 23.0
 size_flags_horizontal = 3
 
 [node name="SendButton" type="Button" parent="HBoxContainer"]
-margin_left = 491.0
-margin_right = 534.0
-margin_bottom = 24.0
+offset_left = 1352.0
+offset_right = 1387.0
+offset_bottom = 23.0
 text = "Send"
 
 [node name="Username" type="LineEdit" parent="HBoxContainer"]
-margin_left = 538.0
-margin_right = 666.0
-margin_bottom = 24.0
-rect_min_size = Vector2( 128, 0 )
+offset_left = 1390.0
+offset_right = 1440.0
+offset_bottom = 23.0
 text = "Anonymous"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
-margin_top = 28.0
-margin_right = 666.0
-margin_bottom = 666.0
+offset_top = 26.0
+offset_right = 1440.0
+offset_bottom = 810.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="ChatBox" type="RichTextLabel" parent="ScrollContainer"]
-margin_right = 666.0
-margin_bottom = 638.0
+offset_right = 1440.0
+offset_bottom = 784.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "System: Enter some text and hit `send` to broadcast it to peers.
 "
 
-[node name="HyperGateway" parent="." instance=ExtResource( 2 )]
-autoStart = false
+[node name="HyperGateway" parent="." instance=ExtResource( "2" )]
 
 [node name="HyperEventSource" type="Node" parent="HyperGateway"]
-script = ExtResource( 3 )
+script = ExtResource( "3" )
 
 [node name="BroadcastRequest" type="HTTPRequest" parent="HyperGateway"]
-script = ExtResource( 4 )
+script = ExtResource( "4" )
 
 [node name="ListPeersRequest" type="HTTPRequest" parent="HyperGateway"]
-script = ExtResource( 4 )
+script = ExtResource( "4" )
 
-[connection signal="text_entered" from="HBoxContainer/ChatInput" to="." method="_on_ChatInput_text_entered"]
 [connection signal="pressed" from="HBoxContainer/SendButton" to="." method="_on_SendButton_pressed"]
 [connection signal="started_gateway" from="HyperGateway" to="." method="_on_HyperGateway_started_gateway"]
-[connection signal="event" from="HyperGateway/HyperEventSource" to="." method="_on_HyperEventSource_event"]
