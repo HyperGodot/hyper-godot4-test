@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6gdsj6exjke3"
-path="res://.godot/imported/witchlogo.png-b7c844c4e63c3a858f211e6875b57fb7.ctex"
+uid="uid://bc25bt6c1gny8"
+path="res://.godot/imported/UnCheckedBox.png-a8ab32a4a317a43d30d80f3c44741edc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/witchlogo.png"
-dest_files=["res://.godot/imported/witchlogo.png-b7c844c4e63c3a858f211e6875b57fb7.ctex"]
+source_file="res://assets/themes/DarkTheme/Icons/UnCheckedBox.png"
+dest_files=["res://.godot/imported/UnCheckedBox.png-a8ab32a4a317a43d30d80f3c44741edc.ctex"]
 
 [params]
 
