@@ -80,6 +80,10 @@ func _ready():
 	callable = Callable(self, "_on_settings_cancel_pressed")
 	settings_action_cancel.connect("pressed", callable)
 	
+	callable = Callable(self, "_on_multiplayer_start_pressed")
+	multiplayer_StartGW.connect("pressed", callable)
+	callable = Callable(self, "_on_multiplayer_stop_pressed")
+	multiplayer_StopGW.connect("pressed", callable)
 	callable = Callable(self, "_on_multiplayer_ok_pressed")
 	multiplayer_actions_ok.connect("pressed", callable)
 	
@@ -258,7 +262,7 @@ func _on_multiplayer_ok_pressed():
 	multiplayer_menu.hide()
 
 
-func _on_Start_pressed():
+func _on_multiplayer_start_pressed():
 	hyperGatewayNode.port = multiplayer_PortInput.text.to_int()
 	hyperGossipNode.url = multiplayer_GossipURLInput.text
 	hyperGatewayNode.start()
@@ -266,7 +270,7 @@ func _on_Start_pressed():
 	_UpdateHyperGossipInfo()
 
 
-func _on_Stop_pressed():
+func _on_multiplayer_stop_pressed():
 	hyperGatewayNode.stop()
 	_UpdateHyperGatewayInfo()
 	_UpdateHyperGossipInfo()
