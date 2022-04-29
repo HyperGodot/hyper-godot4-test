@@ -30,7 +30,8 @@ func _input(_event):
 			UINode.resetUI()
 			UINode.showUI()
 	if Input.is_action_just_pressed("toggleMouse"):
-		HandleMouseToggle()
+		# HandleMouseToggle()
+		return
 
 func _process(_delta):
 	pass

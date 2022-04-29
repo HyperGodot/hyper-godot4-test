@@ -31,6 +31,7 @@ var seen_messages = LRU.new()
 func _ready():
 	randomize()
 	
+	peerListRequest.name = "PeerListRequest"
 	add_child(peerListRequest)
 	var callable = Callable(self, "_on_peer_list")
 	peerListRequest.connect("request_completed", callable)
@@ -39,11 +40,13 @@ func _ready():
 	for _i in range(pool_size):
 		var broadcastRequest = HyperRequest.new()
 		broadcastRequest.use_threads = true
+		broadcastRequest.name = "BroadcastRequest#" + str(_i)
 		add_child(broadcastRequest)
 		callable = Callable(self, "_on_broadcast_completed")
 		broadcastRequest.connect("request_completed", callable)
 		requestPool.push_back(broadcastRequest)
 
+	eventSource.name = "HyperEventSource"
 	add_child(eventSource)
 	callable = Callable(self, "_on_event")
 	eventSource.connect("event", callable)

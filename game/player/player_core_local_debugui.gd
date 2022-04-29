@@ -50,15 +50,15 @@ func _on_map_cyber1_button_up():
 	
 func tryMapChange(mapChangeName : String, sendGossip : bool):
 	var mapCurrentName = actualMapNode.name
-	var mapNode = null
+	var _mapNode = null
 	if(mapCurrentName != mapChangeName):
 		actualMapNode.queue_free()
 		if(mapChangeName == "map_test"):
-			mapNode = get_tree().get_current_scene().map_test
+			_mapNode = get_tree().get_current_scene().map_test
 		elif(mapChangeName == "map_cyber"):
-			mapNode = get_tree().get_current_scene().map_cyber
+			_mapNode = get_tree().get_current_scene().map_cyber
 		elif(mapChangeName == "map_cyber1"):
-			mapNode = get_tree().get_current_scene().map_cyber1
+			_mapNode = get_tree().get_current_scene().map_cyber1
 		# Update Current Map
 		playerNode.currentMap = get_tree().get_current_scene().get_node("CurrentMap").get_child(1)
 		# Update Actual Map

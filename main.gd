@@ -7,10 +7,10 @@ extends Node
 func _ready():
 	pass
 
-func _process(delta):
+func _process(_delta):
 	pass
 
-func getSpawnLocation(bodyNode, mapNode) -> Vector3:
+func getSpawnLocation(_bodyNode, mapNode) -> Vector3:
 	# Get Number of Maps
 	var childCount : int = self.get_child(0).get_child_count()
 	
@@ -20,8 +20,6 @@ func getSpawnLocation(bodyNode, mapNode) -> Vector3:
 	childCount = playerSpawnNodes.get_child_count()
 	# Get Random Spawn Node
 	var spawnNode : Node3D = playerSpawnNodes.get_child( randi() % childCount )
-	# Get Global Space
-	var globalCoord = spawnNode.global_transform.origin
 	
 	# Return!
 	return spawnNode.global_transform.origin

@@ -4,13 +4,14 @@ signal replace_main_scene
 #warning-ignore:unused_signal
 signal quit # Useless, but needed as there is no clean way to check if a node exposes a signal
 
-@onready var ui = $Menu_Main
-@onready var uiProper = $Menu_Main/CenterContainer
+@onready var ui = $CenterContainer
+@onready var uiProper = $CenterContainer
 
 @onready var main = uiProper.get_node("Main")
-@onready var play_button = main.get_node("Resume")
-@onready var settings_button = main.get_node("Settings")
-@onready var quit_button = main.get_node("Quit")
+@onready var resume_button : Button = main.get_node("Resume")
+@onready var settings_button : Button = main.get_node("Settings")
+@onready var multiplayer_button : Button = main.get_node("Multiplayer")
+@onready var quit_button : Button = main.get_node("Quit")
 
 @onready var settings_menu = uiProper.get_node("Settings")
 @onready var settings_actions = settings_menu.get_node("Actions")
@@ -24,6 +25,7 @@ signal quit # Useless, but needed as there is no clean way to check if a node ex
 @onready var multiplayer_LabelGossipStatus = multiplayer_menu.get_node("HyperGossipStatus").get_node("LabelGossipStatus")
 @onready var multiplayer_PortInput = multiplayer_menu.get_node("HyperGatewayPort").get_node("LineEdit")
 @onready var multiplayer_GossipURLInput = multiplayer_menu.get_node("GossipURL").get_node("LineEdit")
+@onready var multiplayer_actions_ok = multiplayer_menu.get_node("Actions").get_node("OK")
 
 @onready var shadows_menu = settings_menu.get_node("Shadows")
 @onready var shadows_4096 = shadows_menu.get_node("4096")
@@ -32,8 +34,8 @@ signal quit # Useless, but needed as there is no clean way to check if a node ex
 @onready var shadows_disabled = shadows_menu.get_node("Disabled")
 
 @onready var gi_menu = settings_menu.get_node("GI")
-@onready var gi_high = gi_menu.get_node("High")
-@onready var gi_low = gi_menu.get_node("Low")
+@onready var gi_full = gi_menu.get_node("Full")
+@onready var gi_half = gi_menu.get_node("Half")
 @onready var gi_disabled = gi_menu.get_node("Disabled")
 
 @onready var aa_menu = settings_menu.get_node("AA")
@@ -62,6 +64,25 @@ func _ready():
 	# get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D, SceneTree.STRETCH_ASPECT_KEEP, Vector2(1440, 810))
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
+	# Setup Signals
+	var callable
+	callable = Callable(self, "_on_resume_pressed")
+	resume_button.connect("pressed", callable)
+	callable = Callable(self, "_on_settings_pressed")
+	settings_button.connect("pressed", callable)
+	callable = Callable(self, "_on_multiplayer_pressed")
+	multiplayer_button.connect("pressed", callable)
+	callable = Callable(self, "_on_quit_pressed")
+	quit_button.connect("pressed", callable)
+	
+	callable = Callable(self, "_on_settings_apply_pressed")
+	settings_action_apply.connect("pressed", callable)
+	callable = Callable(self, "_on_settings_cancel_pressed")
+	settings_action_cancel.connect("pressed", callable)
+	
+	callable = Callable(self, "_on_multiplayer_ok_pressed")
+	multiplayer_actions_ok.connect("pressed", callable)
+	
 func _getIsMenuShowing() -> bool:
 	return ui.visible
 
@@ -82,11 +103,7 @@ func resetUI():
 	multiplayer_menu.hide()
 	main.show()
 
-func _on_Quit_pressed():
-	get_tree().quit()
-
-
-func _on_Settings_pressed():
+func _on_settings_pressed():
 	main.hide()
 	settings_menu.show()
 	settings_action_cancel.grab_focus()
@@ -96,9 +113,9 @@ func _on_Settings_pressed():
 		world_environment = get_tree().get_current_scene().find_child("WorldEnvironment", true, false)
 	
 	if Settings.gi_quality == Settings.GIQuality.HIGH:
-		gi_high.button_pressed = true
+		gi_full.button_pressed = true
 	elif Settings.gi_quality == Settings.GIQuality.LOW:
-		gi_low.button_pressed = true
+		gi_half.button_pressed = true
 	elif Settings.gi_quality == Settings.GIQuality.DISABLED:
 		gi_disabled.button_pressed = true
 
@@ -142,7 +159,7 @@ func _UpdateHyperGossipInfo():
 				multiplayer_LabelGossipStatus.text = hyperGossipURL
 			
 
-func _on_Multiplayer_pressed():
+func _on_multiplayer_pressed():
 	main.hide()
 	# Check for HyperGateway Node
 	if(hyperGatewayNode == null):
@@ -159,39 +176,39 @@ func _on_Multiplayer_pressed():
 func ChangeGIProbeVisibility(_visible : bool):
 	pass
 
-func _on_Apply_pressed():
+func _on_settings_apply_pressed():
 	main.show()
 	# play_button.grab_focus()
 	settings_menu.hide()
 	
-	if shadows_4096.pressed:
+	if shadows_4096.button_pressed:
 		Settings.shadows_quality = Settings.ShadowsQuality.SHADOWS_4096
 		ProjectSettings["rendering/shadows/directional_shadow/size"] = 4096
 		ProjectSettings["rendering/shadows/shadow_atlas/size"] = 4096
 		ProjectSettings["rendering/shadows/directional_shadow/soft_shadow_quality"] = 2
-	elif shadows_2048.pressed:
+	elif shadows_2048.button_pressed:
 		Settings.shadows_quality = Settings.ShadowsQuality.SHADOWS_2048
 		ProjectSettings["rendering/shadows/directional_shadow/size"] = 2048
 		ProjectSettings["rendering/shadows/shadow_atlas/size"] = 2048
 		ProjectSettings["rendering/shadows/directional_shadow/soft_shadow_quality"] = 2
-	elif shadows_1024.pressed:
+	elif shadows_1024.button_pressed:
 		Settings.shadows_quality = Settings.ShadowsQuality.SHADOWS_1024
 		ProjectSettings["rendering/shadows/directional_shadow/size"] = 1024
 		ProjectSettings["rendering/shadows/shadow_atlas/size"] = 1024
 		ProjectSettings["rendering/shadows/directional_shadow/soft_shadow_quality"] = 2
-	elif shadows_disabled.pressed:
+	elif shadows_disabled.button_pressed:
 		Settings.shadows_quality = Settings.ShadowsQuality.DISABLED
 		ProjectSettings["rendering/shadows/directional_shadow/size"] = 0
 		ProjectSettings["rendering/shadows/shadow_atlas/size"] = 0
 		ProjectSettings["rendering/shadows/directional_shadow/soft_shadow_quality"] = 2
 
-	if gi_high.pressed:
+	if gi_full.button_pressed:
 		Settings.gi_quality = Settings.GIQuality.HIGH
 		ProjectSettings["rendering/quality/voxel_cone_tracing/high_quality"] = true
-	elif gi_low.pressed:
+	elif gi_half.button_pressed:
 		Settings.gi_quality = Settings.GIQuality.LOW
 		ProjectSettings["rendering/quality/voxel_cone_tracing/high_quality"] = false
-	elif gi_disabled.pressed:
+	elif gi_disabled.button_pressed:
 		Settings.gi_quality = Settings.GIQuality.DISABLED
 
 	if aa_8x.button_pressed:
@@ -211,17 +228,17 @@ func _on_Apply_pressed():
 		ProjectSettings["rendering/anti_aliasing/quality/msaa"] = 0
 		get_viewport().msaa = Viewport.MSAA_DISABLED
 
-	if bloom_high.pressed:
+	if bloom_high.button_pressed:
 		Settings.bloom_quality = Settings.BloomQuality.HIGH
 		if(world_environment != null):
 			world_environment.environment.glow_enabled = true
 			ProjectSettings["rendering/environment/glow/upscale_mode"] = 1
-	elif bloom_low.pressed:
+	elif bloom_low.button_pressed:
 		Settings.bloom_quality = Settings.BloomQuality.LOW
 		if(world_environment != null):
 			world_environment.environment.glow_enabled = true
 			ProjectSettings["rendering/environment/glow/upscale_mode"] = 0
-	elif bloom_disabled.pressed:
+	elif bloom_disabled.button_pressed:
 		Settings.bloom_quality = Settings.BloomQuality.DISABLED
 		if(world_environment != null):
 			world_environment.environment.glow_enabled = false
@@ -230,19 +247,12 @@ func _on_Apply_pressed():
 	Settings.save_settings()
 
 
-func _on_Cancel_pressed():
+func _on_settings_cancel_pressed():
 	main.show()
 	# play_button.grab_focus()
 	settings_menu.hide()
 
-
-func _on_Multiplayer_Cancel_pressed():
-	main.show()
-	# play_button.grab_focus()
-	multiplayer_menu.hide()
-
-
-func _on_Multiplayer_Apply_pressed():
+func _on_multiplayer_ok_pressed():
 	main.show()
 	# play_button.grab_focus()
 	multiplayer_menu.hide()
@@ -258,7 +268,6 @@ func _on_Start_pressed():
 
 func _on_Stop_pressed():
 	hyperGatewayNode.stop()
-	multiplayer_PortInput
 	_UpdateHyperGatewayInfo()
 	_UpdateHyperGossipInfo()
 
