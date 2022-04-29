@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bnmqs28j8wtp1"]
 
-[ext_resource type="PackedScene" path="res://assets/maps/map_cyber/level0.scn" id="2"]
+[ext_resource type="PackedScene" uid="uid://denmfe20xh0b4" path="res://assets/maps/map_cyber/level0.scn" id="2"]
 [ext_resource type="PackedScene" uid="uid://cexotumax31qe" path="res://game/map_decorations/spawnpad.tscn" id="3"]
 [ext_resource type="Script" path="res://game/maps/map_core.gd" id="4"]
 [ext_resource type="PackedScene" uid="uid://csegj0tubaqd1" path="res://game/map_decorations/teleport.scn" id="5"]
@@ -16,7 +16,7 @@ map_name = "map_cyber"
 [node name="WorldEnvironment" parent="." instance=ExtResource( "6" )]
 
 [node name="DirectionalLight3D" parent="WorldEnvironment" index="1"]
-transform = Transform3D(0.938514, -0.30723, -0.157483, -0.0810201, -0.639414, 0.764582, -0.3356, -0.704811, -0.624991, 0, 0, 0)
+transform = Transform3D(0.341722, -0.755064, -0.559558, -0.0734949, -0.615047, 0.785058, -0.936923, -0.227146, -0.265668, 0, 0, 0)
 
 [node name="asset_map_cyber" parent="." instance=ExtResource( "2" )]
 

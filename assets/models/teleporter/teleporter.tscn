@@ -1,5 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bhfkx36b5wtfr"]
+[gd_scene load_steps=3 format=3 uid="uid://bhfkx36b5wtfr"]
 
 [ext_resource type="PackedScene" uid="uid://dtw7lqjis6b1" path="res://assets/models/teleporter/teleporter.glb" id="1"]
+[ext_resource type="Material" uid="uid://bxhbikwdj6eg5" path="res://assets/models/teleporter/emit.material" id="2_okkur"]
 
 [node name="teleporter" instance=ExtResource( "1" )]
+
+[node name="Cube001_RPanel_RScatter_RScatter" parent="." index="0"]
+material_override = ExtResource( "2_okkur" )

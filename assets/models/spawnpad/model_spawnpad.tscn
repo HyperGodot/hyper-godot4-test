@@ -3,3 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://doimmmievqnhq" path="res://assets/models/spawnpad/spawnpad.glb" id="1"]
 
 [node name="spawnpad" instance=ExtResource( "1" )]
+
+[node name="spawn_pad" parent="." index="0"]
+gi_mode = 1
